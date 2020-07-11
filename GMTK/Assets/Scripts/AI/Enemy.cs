@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     public float damage;
     public float atkSpeed;
     public float atkRange;
-
+    public float selectedWeapon;
     [Header("Enemy Movement Settings")]
     public float moveSpeed;
     public float turnSpeed = 10;
@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     public float stopToAtkRange;
     public Transform meleeAtkPoint;
     public LayerMask allyLayer;
+    bool theFloatOfShame = false;
 
     // finding closest target
     float distance;
@@ -36,6 +37,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SelectWeapon();
         currentHP = maxHP;
 
         agent = GetComponent<NavMeshAgent>();
@@ -51,7 +53,21 @@ public class Enemy : MonoBehaviour
     {
         MoveToTarget();
         FaceTarget();
-        AttackTarget(); 
+       
+    }
+    void SelectWeapon()
+    {
+        int i = Random.Range(1, 10);
+        if (i >= 7)
+        {
+            selectedWeapon = 1f;
+            transform.Find("Sword").gameObject.SetActive(true);
+        }
+        else
+        {
+            selectedWeapon = 2f;
+            transform.Find("Spear").gameObject.SetActive(true);
+        }
     }
 
     void FindTarget()
@@ -79,21 +95,29 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            AttackTarget();
             agent.speed = 0;
-        }
+        }  
     }
 
     void AttackTarget()
     {
+        //sword is 1
+        //spear is 2
         if (Time.time >= nextAttack)
         {
             nextAttack = Time.time + 1 / atkSpeed;
-
-            Collider[] alliesHit = Physics.OverlapSphere(meleeAtkPoint.position, atkRange, allyLayer);
-            foreach (Collider a in alliesHit)
+            switch (selectedWeapon)
             {
-                Allies ally = a.GetComponent<Allies>();
-                ally.TakeDamage(damage);
+                case 1:
+                    AiSword swordStats = GetComponentInChildren<AiSword>();
+                    swordStats.Attack(meleeAtkPoint, atkRange, damage, theFloatOfShame);
+                    break;
+                case 2:
+                    AiSpear weaponStats = GetComponentInChildren<AiSpear>();
+                    weaponStats.Attack(meleeAtkPoint, atkRange, damage, theFloatOfShame);
+                    break;
+
             }
 
             closestDistance = 1000000;
