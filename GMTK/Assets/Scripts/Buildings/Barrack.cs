@@ -19,11 +19,26 @@ public class Barrack : MonoBehaviour
 
     GameManager gameManager;
 
+    Barrack instance;
+
     // Start is called before the first frame update
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
 
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void OnEnable()
+    {
         StartCoroutine(GainMenOverTime());
     }
 

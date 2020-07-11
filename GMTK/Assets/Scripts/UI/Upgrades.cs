@@ -22,7 +22,7 @@ public class Upgrades : MonoBehaviour
 
     [Header("Buildings")]
     public GameObject barrack;
-    public GameObject farm;
+    public GameObject[] farm;
     public GameObject tradingPost;
     public GameObject hospital;
 
@@ -34,13 +34,15 @@ public class Upgrades : MonoBehaviour
 
     [Header("Upgrade Buttons")]
     public Button[] upgradeFarmButton;
-    public int upgradeFarmButtonIndex;
     public Button upgradeBarracksButton;
     public Button upgradeTradingPostButton;
     public Button upgradeHospitalButton;
 
-    [Header("Potential Farm Upgrades")]
-    public GameObject[] conqueredFarms;
+    [Header("Upgrade Texts")]
+    public TextMeshProUGUI farmUpgradeText;
+    public TextMeshProUGUI barracksUpgradeText;
+    public TextMeshProUGUI tradingPostUpgradeText;
+    public TextMeshProUGUI hospitalUpgradeText;
 
     Barrack b;
     Farm f;
@@ -124,23 +126,46 @@ public class Upgrades : MonoBehaviour
 
     public void UpgradeFarm(int index)
     {
-        upgradeFarmButton[upgradeFarmButtonIndex].interactable = false;
+        if (gameManager.levelOfFarms[index] >= 2)
+        {
+            upgradeFarmButton[index].interactable = false;
+        }
+        else
+        {
+            gameManager.levelOfFarms[index] += 1;
+            farm[index].GetComponent<Farm>().UpgradeFarm();
+        }
+
+        Map map = FindObjectOfType<Map>();
+        map.ShowShopPanel();
     }
 
     public void UpgradeBarracks()
     {
         b = FindObjectOfType<Barrack>();
-        b.UpgradeBarracks();
 
-        upgradeBarracksButton.interactable = false;
+        if (b.levelOfBarrack >= 2)
+        {
+            upgradeBarracksButton.interactable = false;
+        }
+        else
+        {
+            b.UpgradeBarracks();
+        }
     }
 
     public void UpgradeTradingPost()
     {
         t = FindObjectOfType<TradingPost>();
-        t.UpgradeTradingPost();
 
-        upgradeTradingPostButton.interactable = false;
+        if (t.levelOfTradingPost >= 2)
+        {
+            upgradeTradingPostButton.interactable = false;
+        }
+        else
+        {
+            t.UpgradeTradingPost();
+        }
     }
 
     public void UpgradeHospital()

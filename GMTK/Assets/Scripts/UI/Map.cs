@@ -59,11 +59,12 @@ public class Map : MonoBehaviour
         {
             if (!gameManager.farmsConquered[i])
             {
-                upgrades.conqueredFarms[i].SetActive(false);
+                print(i);
+                upgrades.upgradeFarmButton[i].gameObject.SetActive(false);
             }
             else
             {
-                upgrades.conqueredFarms[i].SetActive(true);
+                upgrades.upgradeFarmButton[i].gameObject.SetActive(true);
             }
         }
     }

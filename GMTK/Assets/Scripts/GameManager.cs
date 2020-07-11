@@ -21,18 +21,21 @@ public class GameManager : MonoBehaviour
 
     [Header("Farm")]
     public bool[] farmsConquered;
-    public int numberOfFarmsOwned;
+    public int[] levelOfFarms;
 
     [Header("Barrack")]
     public bool unlockedBarracks = false;
+    public int levelOfBarracks;
     public int gainsFromBarracks;
 
     [Header("TradingPost")]
     public bool unlockedTradingPost = false;
+    public int levelOfTradingPost;
     public int gainsFromTradingPosts;
 
     [Header("Hospital")]
     public bool unlockedHospital = false;
+    public int levelOfHospital;
     public int playerHeal;
     public int playerHealCost;
     public int armyHeal;
@@ -42,10 +45,20 @@ public class GameManager : MonoBehaviour
     public int[] controlInTier1s;
     public int[] controlInTier2s;
 
+    GameManager instance;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -74,9 +87,8 @@ public class GameManager : MonoBehaviour
         int currentFoodInAllFarms = 0;
 
         Farm[] farms = FindObjectsOfType<Farm>();
-        numberOfFarmsOwned = farms.Length;
 
-        for (int i = 0; i < numberOfFarmsOwned; i++)
+        for (int i = 0; i < farms.Length; i++)
         {
             currentFoodInAllFarms += farms[i].currentFood;
         }

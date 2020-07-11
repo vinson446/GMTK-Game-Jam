@@ -21,11 +21,26 @@ public class Farm : MonoBehaviour
 
     GameManager gameManager;
 
+    Farm instance;
+
     // Start is called before the first frame update
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
 
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void OnEnable()
+    {
         StartCoroutine(GainFoodOverTime());
     }
 

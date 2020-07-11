@@ -43,3 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e1f765b9b657e44fb31f589b0b8fee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevelOfHospital: 0
+  maxLevelOfHospital: 0
+  playerHeal: 0
+  playerCost: 0
+  upgradeAmount: 0
+  upgradeCost: 0
