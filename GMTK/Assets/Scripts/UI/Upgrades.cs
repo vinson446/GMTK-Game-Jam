@@ -39,6 +39,9 @@ public class Upgrades : MonoBehaviour
     public Button upgradeHospitalButton;
 
     [Header("Upgrade Texts")]
+    public TextMeshProUGUI hospitalChangeText;
+    public TextMeshProUGUI hospitalDescriptionChangeText;
+
     public TextMeshProUGUI farmUpgradeText;
     public TextMeshProUGUI barracksUpgradeText;
     public TextMeshProUGUI tradingPostUpgradeText;
@@ -72,10 +75,12 @@ public class Upgrades : MonoBehaviour
 
     public void PurchaseSoldier()
     {
-        if (gameManager.gold >= buySoldierCost)
+        if (gameManager.gold >= buySoldierCost && gameManager.currentArmySize < gameManager.maxArmySize)
         {
             gameManager.boughtSoldiers += 1;
             gameManager.gold -= buySoldierCost;
+
+            gameManager.CalculateCurrentArmySize();
         }
     }
 
@@ -118,9 +123,15 @@ public class Upgrades : MonoBehaviour
 
             gameManager.unlockedHospital = true;
 
-            buyHospitalButton.interactable = false;
+            hospitalChangeText.text = "BUY HEAL";
+            hospitalDescriptionChangeText.text = "+" + h.playerHeal.ToString() + " Player HP";
 
             gameManager.gold -= buyHospitalCost;
+        }
+        else if (gameManager.unlockedHospital && gameManager.gold >= buyHospitalCost)
+        {
+            Allies player = FindObjectOfType<Allies>();
+            player.TakeDamage(-h.playerHeal);
         }
     }
 
@@ -144,7 +155,7 @@ public class Upgrades : MonoBehaviour
     {
         b = FindObjectOfType<Barrack>();
 
-        if (b.levelOfBarrack >= 2)
+        if (b.levelOfBarrack >= b.maxLevelOfBarrack)
         {
             upgradeBarracksButton.interactable = false;
         }
@@ -158,7 +169,7 @@ public class Upgrades : MonoBehaviour
     {
         t = FindObjectOfType<TradingPost>();
 
-        if (t.levelOfTradingPost >= 2)
+        if (t.levelOfTradingPost >= t.maxLevelOfTradingPost)
         {
             upgradeTradingPostButton.interactable = false;
         }
@@ -170,6 +181,15 @@ public class Upgrades : MonoBehaviour
 
     public void UpgradeHospital()
     {
-        upgradeHospitalButton.interactable = false;
+        h = FindObjectOfType<Hospital>();
+
+        if (h.currentLevelOfHospital >= h.maxLevelOfHospital)
+        {
+            upgradeHospitalButton.interactable = false;
+        }
+        else
+        {
+            h.UpgradeHospital();
+        }
     }
 }

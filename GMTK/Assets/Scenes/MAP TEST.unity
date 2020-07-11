@@ -289,6 +289,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrack
       objectReference: {fileID: 0}
+    - target: {fileID: 3584503974932430992, guid: a1726897a8bdc664aa2be009ca9c9433,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4075759310722621179, guid: a1726897a8bdc664aa2be009ca9c9433,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -861,6 +866,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trading Post
       objectReference: {fileID: 0}
+    - target: {fileID: 5684602171782629898, guid: 2ff4724af5e7b0a41aba8664d3110b1b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ff4724af5e7b0a41aba8664d3110b1b, type: 3}
 --- !u!1 &88626740 stripped
@@ -874,6 +884,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6037783470546244212, guid: fb30c7ecc278b0c41917f4c88ee25078,
     type: 3}
   m_PrefabInstance: {fileID: 699666839}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &119001247 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5684602171782629898, guid: 2ff4724af5e7b0a41aba8664d3110b1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 80131424}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &124389293
 GameObject:
@@ -1715,6 +1731,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215890509}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &219601625 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3584503974932430992, guid: a1726897a8bdc664aa2be009ca9c9433,
+    type: 3}
+  m_PrefabInstance: {fileID: 26362954}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &222520479
 GameObject:
   m_ObjectHideFlags: 0
@@ -3232,6 +3254,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 414865075}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &425807462 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3813399330579821189, guid: 3b02dda140bf4a6479d705f35f514dba,
+    type: 3}
+  m_PrefabInstance: {fileID: 1617438975}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &431684339
 GameObject:
   m_ObjectHideFlags: 0
@@ -6020,7 +6048,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '+10 Player HP '
+  m_text: +Can Heal Player
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6089,9 +6117,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 657263692}
-    characterCount: 14
+    characterCount: 16
     spriteCount: 0
-    spaceCount: 3
+    spaceCount: 2
     wordCount: 4
     linkCount: 0
     lineCount: 1
@@ -6454,13 +6482,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 688508116}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.840588, y: -0.25449598, z: -0.047106583, w: 0.47584105}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 50.895004, y: -149.36601, z: -131.46101}
 --- !u!1 &691329640
 GameObject:
   m_ObjectHideFlags: 0
@@ -10382,7 +10410,7 @@ MonoBehaviour:
   upgradeBarracksCost: 100
   upgradeTradingPostCost: 100
   upgradeHospitalCost: 100
-  barrack: {fileID: 3584503974932430992, guid: a1726897a8bdc664aa2be009ca9c9433, type: 3}
+  barrack: {fileID: 219601625}
   farm:
   - {fileID: 1439447865}
   - {fileID: 96661207}
@@ -10393,10 +10421,8 @@ MonoBehaviour:
   - {fileID: 718475174}
   - {fileID: 807053241}
   - {fileID: 88626740}
-  tradingPost: {fileID: 5684602171782629898, guid: 2ff4724af5e7b0a41aba8664d3110b1b,
-    type: 3}
-  hospital: {fileID: 3813399330579821189, guid: 3b02dda140bf4a6479d705f35f514dba,
-    type: 3}
+  tradingPost: {fileID: 119001247}
+  hospital: {fileID: 425807462}
   buySoldierButton: {fileID: 1458201456}
   buyBarracksButton: {fileID: 2027149157}
   buyTradingPostButton: {fileID: 1375447367}
@@ -10414,6 +10440,8 @@ MonoBehaviour:
   upgradeBarracksButton: {fileID: 2093487198}
   upgradeTradingPostButton: {fileID: 124389295}
   upgradeHospitalButton: {fileID: 431684341}
+  hospitalChangeText: {fileID: 1922414766}
+  hospitalDescriptionChangeText: {fileID: 657263692}
   farmUpgradeText: {fileID: 0}
   barracksUpgradeText: {fileID: 0}
   tradingPostUpgradeText: {fileID: 0}
@@ -15961,6 +15989,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hospital
       objectReference: {fileID: 0}
+    - target: {fileID: 3813399330579821189, guid: 3b02dda140bf4a6479d705f35f514dba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8937701220860448905, guid: 3b02dda140bf4a6479d705f35f514dba,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18659,7 +18692,7 @@ MonoBehaviour:
   maxArmySize: 0
   boughtSoldiers: 0
   areasConquered: 00000000000000000000000000
-  farmsConquered: 010001000100010001
+  farmsConquered: 000000000000000000
   levelOfFarms: 010000000100000001000000010000000100000001000000010000000100000001000000
   unlockedBarracks: 0
   levelOfBarracks: 0

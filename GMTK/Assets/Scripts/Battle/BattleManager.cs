@@ -22,6 +22,14 @@ public class BattleManager : MonoBehaviour
     public float enemySpawnMinZ;
     public float enemySpawnMaxZ;
 
+    [Header("Battle Spawn Settings")]
+    public int battleFieldNumber;
+
+    public float minAllyHP;
+    public float maxAllyHP;
+    public float minEnemyHP;
+    public float maxEnemyHP;
+
     [Header("Battle Settings")]
     public int numAlliesRemaining;
     public int numEnemiesRemaining;
@@ -40,6 +48,8 @@ public class BattleManager : MonoBehaviour
     public TextMeshProUGUI allyCasualtiesText;
     public TextMeshProUGUI enemyCasualtiesText;
 
+    GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +58,8 @@ public class BattleManager : MonoBehaviour
 
         numAlliesRemaining = numAlliesToSpawn;
         numEnemiesRemaining = numEnemiesToSpawn;
+
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void SpawnAI()
@@ -128,6 +140,8 @@ public class BattleManager : MonoBehaviour
                 rewardGoldText.text = "+" + rewardGold.ToString() + " GOLD";
                 allyCasualtiesText.text = (numAlliesToSpawn - numAlliesRemaining).ToString();
                 enemyCasualtiesText.text = (numEnemiesToSpawn - numEnemiesRemaining).ToString();
+
+                gameManager.areasConquered[battleFieldNumber] = true;
 
                 break;
         }

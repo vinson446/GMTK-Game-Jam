@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public float atkSpeed;
 
     [Header("Army Stats")]
+    public int armyLevel = 1;
     public int currentArmySize;
     public int maxArmySize;
 
@@ -67,6 +68,11 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void TransferMapBattleSettingsToBattleground()
+    {
+
+    }
+
     public void CalculateCurrentArmySize()
     {
         int currentSoldiersInAllBarracks = 0;
@@ -78,7 +84,10 @@ public class GameManager : MonoBehaviour
             currentSoldiersInAllBarracks += barracks[i].currentNumOfSoldiers;
         }
 
-        currentArmySize = currentSoldiersInAllBarracks + boughtSoldiers;
+        if (currentArmySize < maxArmySize)
+            currentArmySize = currentSoldiersInAllBarracks + boughtSoldiers;
+        else
+            currentArmySize = maxArmySize;
     }
 
     // get max army size from all the farms

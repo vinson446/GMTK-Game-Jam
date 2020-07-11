@@ -12,6 +12,9 @@ public class Map : MonoBehaviour
     GameManager gameManager;
     Upgrades upgrades;
 
+    [Header("Stats For Each Battleground")]
+    BattleSettings[] battleSettings;
+
     // Start is called before the first frame update
     void Start()
     {
