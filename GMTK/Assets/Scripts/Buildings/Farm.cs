@@ -9,7 +9,7 @@ public class Farm : MonoBehaviour
     public int maxLevelOfFarm = 3;
 
     [Header("Current Settings")]
-    public int currentFood;
+    //  public int currentFood;
     public int maxFood;
     public int foodGainOverTime;
     public int timeIncrement;
@@ -41,7 +41,7 @@ public class Farm : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(GainFoodOverTime());
+        
     }
 
     // Update is called once per frame
@@ -65,25 +65,5 @@ public class Farm : MonoBehaviour
         }
     }
 
-    IEnumerator GainFoodOverTime()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(timeIncrement);
-
-            currentFood += foodGainOverTime;
-
-            if (currentFood < 0)
-            {
-                gameManager.currentArmySize -= 1;
-
-                if (gameManager.currentArmySize < 0)
-                    gameManager.currentArmySize = 0;
-            }
-
-            gameManager.CalculateCurrentArmySize();
-            gameManager.CalculateCurrentFood();
-            gameManager.CalculateMaxArmySize();
-        }
-    }
+   
 }

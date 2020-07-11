@@ -39,7 +39,7 @@ public class Barrack : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(GainMenOverTime());
+       
     }
 
     // Update is called once per frame
@@ -59,22 +59,4 @@ public class Barrack : MonoBehaviour
         }
     }
 
-    IEnumerator GainMenOverTime()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(timeIncrement);
-
-            if (currentNumOfSoldiers >= gameManager.maxArmySize)
-            {
-                currentNumOfSoldiers = gameManager.maxArmySize;
-            }
-            else
-            {
-                currentNumOfSoldiers += soldierGainOverTime;
-            }
-
-            gameManager.CalculateCurrentArmySize();
-        }
-    }
 }

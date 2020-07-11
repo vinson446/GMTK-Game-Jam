@@ -11,9 +11,8 @@ public class GameManager : MonoBehaviour
     public float atkSpeed;
 
     [Header("Army Stats")]
-    public int armyLevel = 1;
     public int currentArmySize;
-    public int maxArmySize;
+
 
     public int boughtSoldiers;
 
@@ -21,7 +20,6 @@ public class GameManager : MonoBehaviour
     public bool[] areasConquered;
 
     [Header("Farm")]
-    public int currentFoodInAllFarms;
     public bool[] farmsConquered;
     public int[] levelOfFarms;
 
@@ -47,6 +45,14 @@ public class GameManager : MonoBehaviour
     public int[] controlInTier1s;
     public int[] controlInTier2s;
 
+    [Header("Food")]
+   public float totalFoodAmmount;
+    float totalFoodProcuction;
+    float currentFoodProduciton;
+   public float currentFoodCapacity;
+
+
+
     GameManager instance;
 
     // Start is called before the first frame update
@@ -63,61 +69,76 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        InvokeRepeating("CalculateCurrentArmySize", 0f, 1f);
+    }
     // Update is called once per frame
     void Update()
     {
-        
+        Mathf.Clamp(currentArmySize, 0f, Mathf.Infinity);
+        Mathf.Clamp(totalFoodAmmount, 0f, Mathf.Infinity);
+
     }
 
-    public void TransferMapBattleSettingsToBattleground()
+
+
+    public void CalcualateTotalFoodCapacity()
     {
 
+        currentFoodCapacity = 0;
+        Farm[] farms = FindObjectsOfType<Farm>();
+
+        for (int i = 0; i < farms.Length; i++)
+        {
+            currentFoodCapacity += farms[i].maxFood;
+        }
+
     }
+    public void CalcualateTotalFoodProduction()
+    {
+        currentFoodProduciton = 0;
+        Farm[] farms = FindObjectsOfType<Farm>();
+
+        for (int i = 0; i < farms.Length; i++)
+        {
+            currentFoodProduciton += farms[i].foodGainOverTime;
+        }
+
+    }
+
 
     public void CalculateCurrentArmySize()
     {
+
         int currentSoldiersInAllBarracks = 0;
 
         Barrack[] barracks = FindObjectsOfType<Barrack>();
-
         for (int i = 0; i < barracks.Length; i++)
         {
-            currentSoldiersInAllBarracks += barracks[i].currentNumOfSoldiers;
+            currentSoldiersInAllBarracks += barracks[i].soldierGainOverTime;
         }
 
-        if (currentArmySize < maxArmySize)
-            currentArmySize += currentSoldiersInAllBarracks + boughtSoldiers;
-        else
-            currentArmySize = maxArmySize;
-    }
-
-    public void CalculateCurrentFood()
-    {
-        currentFoodInAllFarms = 0;
-
-        Farm[] farms = FindObjectsOfType<Farm>();
-
-        for (int i = 0; i < farms.Length; i++)
-        {
-            currentFoodInAllFarms += farms[i].currentFood;
-        }
-
-        currentFoodInAllFarms -= currentArmySize;
+        currentArmySize += currentSoldiersInAllBarracks;
+        FoodCalculation();
+        if (totalFoodAmmount < currentArmySize)
+            currentArmySize--;
+        
     }
 
     // get max army size from all the farms
-    public void CalculateMaxArmySize()
+    public void FoodCalculation()
     {
-        int maxFoodInAllFarms = 0;
+        CalcualateTotalFoodCapacity();
+        CalcualateTotalFoodProduction();
 
-        Farm[] farms = FindObjectsOfType<Farm>();
+        totalFoodProcuction = currentFoodProduciton- currentArmySize;
+        
+        
+        totalFoodAmmount += totalFoodProcuction;
+        if (totalFoodAmmount < 0)
+            totalFoodAmmount = 0;
 
-        for (int i = 0; i < farms.Length; i++)
-        {
-            maxFoodInAllFarms += farms[i].maxFood;
-        }
-
-        maxArmySize = maxFoodInAllFarms;
     }
 
     public void CalculateGold(int amt)

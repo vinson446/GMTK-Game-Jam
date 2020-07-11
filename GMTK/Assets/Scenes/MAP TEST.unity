@@ -6657,7 +6657,7 @@ PrefabInstance:
     - target: {fileID: 6037783470546244212, guid: fb30c7ecc278b0c41917f4c88ee25078,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb30c7ecc278b0c41917f4c88ee25078, type: 3}
@@ -18691,12 +18691,9 @@ MonoBehaviour:
   hp: 30
   damage: 5
   atkSpeed: 1
-  armyLevel: 1
   currentArmySize: 0
-  maxArmySize: 0
   boughtSoldiers: 0
   areasConquered: 00000000000000000000000000
-  currentFoodInAllFarms: 0
   farmsConquered: 000000000000000000
   levelOfFarms: 010000000100000001000000010000000100000001000000010000000100000001000000
   unlockedBarracks: 0
@@ -18713,6 +18710,8 @@ MonoBehaviour:
   armyHealCost: 0
   controlInTier1s: 000000000000000000000000000000000000000000000000000000000000000000000000
   controlInTier2s: 000000000000000000000000
+  totalFoodAmmount: 0
+  currentFoodCapacity: 0
 --- !u!4 &1821330434
 Transform:
   m_ObjectHideFlags: 0
