@@ -3,24 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Ally : MonoBehaviour
 {
-    [Header("Enemy Stats")]
-    public float currentHP;
-    public float maxHP;
+    [Header("Ally Stats")]
     public float damage;
     public float atkSpeed;
     public float atkRange;
 
-    [Header("Enemy Movement Settings")]
+    [Header("Ally Movement Settings")]
     public float moveSpeed;
     public float turnSpeed = 10;
 
-    [Header("Other Enemy Combat Settings")]
+    [Header("Other Ally Combat Settings")]
     public Transform target;
     public float stopToAtkRange;
     public Transform meleeAtkPoint;
-    public LayerMask allyLayer;
+    public LayerMask enemyLayer;
 
     // finding closest target
     float distance;
@@ -35,8 +33,6 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentHP = maxHP;
-
         agent = GetComponent<NavMeshAgent>();
         agent.speed = moveSpeed;
 
@@ -46,20 +42,13 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target == null)
-        {
-            FindTarget();
-        }
-        else
-        {
-            MoveToTarget();
-            AttackTarget();
-        }
+        MoveToTarget();
+        AttackTarget();
     }
 
     void FindTarget()
     {
-        Allies[] targets = FindObjectsOfType<Allies>();
+        Enemy[] targets = FindObjectsOfType<Enemy>();
 
         for (int i = 0; i < targets.Length; i++)
         {
@@ -92,18 +81,21 @@ public class Enemy : MonoBehaviour
         {
             nextAttack = Time.time + 1 / atkSpeed;
 
-            Collider[] alliesHit = Physics.OverlapSphere(meleeAtkPoint.position, atkRange, allyLayer);
-            foreach (Collider a in alliesHit)
+            Collider[] enemiesHit = Physics.OverlapSphere(meleeAtkPoint.position, atkRange, enemyLayer);
+            foreach (Collider e in enemiesHit)
             {
-                Allies ally = a.GetComponent<Allies>();
-                ally.TakeDamage(damage);
+                Enemy enemy = e.GetComponent<Enemy>();
+                enemy.TakeDamage(damage);
             }
-;       }
+
+            closestDistance = 1000000;
+            FindTarget();
+        }
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.green;
         Gizmos.DrawSphere(meleeAtkPoint.position, atkRange);
 
     }
@@ -114,30 +106,5 @@ public class Enemy : MonoBehaviour
         direction.y = 0;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
-    }
-
-    public void TakeDamage(float damage)
-    {
-        // hurt vfx
-        // hurt sfx
-
-        currentHP -= damage;
-
-        if (currentHP <= 0)
-            Die();
-    }
-
-    void Die()
-    {
-        // death vfx
-        // death sfx
-
-        MeshRenderer rend = GetComponent<MeshRenderer>();
-        rend.enabled = false;
-
-        Collider coll = GetComponent<Collider>();
-        coll.enabled = false;
-
-        Destroy(gameObject, 3);
     }
 }

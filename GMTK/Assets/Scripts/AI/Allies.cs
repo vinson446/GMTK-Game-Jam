@@ -6,16 +6,11 @@ public class Allies : MonoBehaviour
 {
     public float currentHP;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    BattleManager battleManager;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        battleManager = FindObjectOfType<BattleManager>();
     }
 
     public void TakeDamage(float damage)
@@ -26,6 +21,13 @@ public class Allies : MonoBehaviour
         currentHP -= damage;
 
         if (currentHP <= 0)
-            Destroy(gameObject);
+            Die();
+    }
+
+    void Die()
+    {
+        battleManager.AllyDies();
+
+        gameObject.SetActive(false);
     }
 }
