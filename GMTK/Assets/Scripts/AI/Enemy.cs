@@ -19,7 +19,6 @@ public class Enemy : MonoBehaviour
     [Header("Other Enemy Combat Settings")]
     public Transform target;
     public float stopToAtkRange;
-    public Transform meleeAtkPoint;
     public LayerMask allyLayer;
     bool theFloatOfShame = false;
 
@@ -111,7 +110,7 @@ public class Enemy : MonoBehaviour
             {
                 case 1:
                     AiSword swordStats = GetComponentInChildren<AiSword>();
-                    swordStats.Attack(meleeAtkPoint, atkRange, damage, theFloatOfShame);
+                    swordStats.Attack(damage, theFloatOfShame);
                     break;
                 case 2:
                     AiSpear weaponStats = GetComponentInChildren<AiSpear>();
@@ -123,13 +122,6 @@ public class Enemy : MonoBehaviour
             closestDistance = 1000000;
             FindTarget();
         }
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(meleeAtkPoint.position, atkRange);
-
     }
 
     void FaceTarget()

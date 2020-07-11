@@ -7,8 +7,8 @@ using TMPro;
 public class BattleManager : MonoBehaviour
 {
     [Header("AI Spawn Settings")]
-    public GameObject ally;
-    public GameObject enemy;
+    public GameObject[] ally;
+    public GameObject[] enemy;
     public int numAlliesToSpawn;
     public int numEnemiesToSpawn;
 
@@ -72,7 +72,7 @@ public class BattleManager : MonoBehaviour
 
             Vector3 randomPos = new Vector3(x, 0, z);
 
-            Instantiate(ally, randomPos, Quaternion.identity);
+            Instantiate(ally[Random.Range(0,3)], randomPos, Quaternion.identity);
         }
 
         // spawn enemies
@@ -83,7 +83,7 @@ public class BattleManager : MonoBehaviour
 
             Vector3 randomPos = new Vector3(x, 0, z);
 
-            Instantiate(enemy, randomPos, Quaternion.identity);
+            Instantiate(enemy[Random.Range(0,3)], randomPos, Quaternion.identity);
         }
     }
 

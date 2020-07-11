@@ -66,8 +66,13 @@ public class AiSpear : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
+<<<<<<< Updated upstream
         //Gizmos.DrawLine(attackPoint.position, atkRange);
     }
 
     
+=======
+        // Gizmos.DrawLine(attackPoint.position, atkRange);
+    }
+>>>>>>> Stashed changes
 }

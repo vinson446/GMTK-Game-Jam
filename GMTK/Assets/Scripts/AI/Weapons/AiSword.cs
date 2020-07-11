@@ -8,6 +8,7 @@ public class AiSword: MonoBehaviour
 
     public Animator animator;
     public Transform attackPoint;
+    public float atkRange = 1;
     public LayerMask enemyLayer;
     public LayerMask Ally;
 
@@ -28,13 +29,13 @@ public class AiSword: MonoBehaviour
 
 
 
-    public void Attack(Transform meleeAtkPoint,float atkRange,float damage, bool isAlly)
+    public void Attack(float damage, bool isAlly)
     {
         animator.SetTrigger("Attack1");
 
         if (isAlly != true)
         {
-            Collider[] enemiesHit = Physics.OverlapSphere(meleeAtkPoint.position, atkRange, enemyLayer);
+            Collider[] enemiesHit = Physics.OverlapSphere(attackPoint.position, atkRange, enemyLayer);
             foreach (Collider e in enemiesHit)
             {
                 Debug.Log(e.name + "Ally Spear");
@@ -44,7 +45,7 @@ public class AiSword: MonoBehaviour
         }
         else
         {
-            Collider[] enemiesHit = Physics.OverlapSphere(meleeAtkPoint.position, atkRange, Ally);
+            Collider[] enemiesHit = Physics.OverlapSphere(attackPoint.position, atkRange, Ally);
             foreach (Collider e in enemiesHit)
             {
                 Debug.Log(e.name + "Enemy Spear");

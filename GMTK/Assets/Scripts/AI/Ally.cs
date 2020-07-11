@@ -107,7 +107,7 @@ public class Ally : MonoBehaviour
                 {
                     case 1:
                         AiSword swordStats = GetComponentInChildren<AiSword>();
-                        swordStats.Attack(meleeAtkPoint, atkRange, damage, theFloatOfShame);
+                        swordStats.Attack(damage, theFloatOfShame);
                         break;
                     case 2:
                         AiSpear weaponStats = GetComponentInChildren<AiSpear>();
