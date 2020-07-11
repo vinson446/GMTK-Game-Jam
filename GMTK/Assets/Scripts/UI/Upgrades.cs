@@ -70,14 +70,15 @@ public class Upgrades : MonoBehaviour
     {
         goldText.text = "$" + gameManager.gold.ToString();
         currentArmySizeText.text = gameManager.currentArmySize.ToString();
-        maxArmySizeText.text = gameManager.maxArmySize.ToString();
+        if (gameManager.currentFoodInAllFarms >= 0)
+            maxArmySizeText.text = gameManager.currentFoodInAllFarms.ToString();
     }
 
     public void PurchaseSoldier()
     {
         if (gameManager.gold >= buySoldierCost && gameManager.currentArmySize < gameManager.maxArmySize)
         {
-            gameManager.boughtSoldiers += 1;
+            gameManager.boughtSoldiers = 1;
             gameManager.gold -= buySoldierCost;
 
             gameManager.CalculateCurrentArmySize();

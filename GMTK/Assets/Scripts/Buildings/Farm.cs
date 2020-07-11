@@ -71,15 +71,18 @@ public class Farm : MonoBehaviour
         {
             yield return new WaitForSeconds(timeIncrement);
 
-            if (currentFood >= maxFood)
+            currentFood += foodGainOverTime;
+
+            if (currentFood < 0)
             {
-                currentFood = maxFood;
-            }
-            else
-            {
-                currentFood += foodGainOverTime;
+                gameManager.currentArmySize -= 1;
+
+                if (gameManager.currentArmySize < 0)
+                    gameManager.currentArmySize = 0;
             }
 
+            gameManager.CalculateCurrentArmySize();
+            gameManager.CalculateCurrentFood();
             gameManager.CalculateMaxArmySize();
         }
     }

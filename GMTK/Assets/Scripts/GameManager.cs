@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public bool[] areasConquered;
 
     [Header("Farm")]
+    public int currentFoodInAllFarms;
     public bool[] farmsConquered;
     public int[] levelOfFarms;
 
@@ -85,15 +86,14 @@ public class GameManager : MonoBehaviour
         }
 
         if (currentArmySize < maxArmySize)
-            currentArmySize = currentSoldiersInAllBarracks + boughtSoldiers;
+            currentArmySize += currentSoldiersInAllBarracks + boughtSoldiers;
         else
             currentArmySize = maxArmySize;
     }
 
-    // get max army size from all the farms
-    public void CalculateMaxArmySize()
+    public void CalculateCurrentFood()
     {
-        int currentFoodInAllFarms = 0;
+        currentFoodInAllFarms = 0;
 
         Farm[] farms = FindObjectsOfType<Farm>();
 
@@ -102,7 +102,22 @@ public class GameManager : MonoBehaviour
             currentFoodInAllFarms += farms[i].currentFood;
         }
 
-        maxArmySize = currentFoodInAllFarms;
+        currentFoodInAllFarms -= currentArmySize;
+    }
+
+    // get max army size from all the farms
+    public void CalculateMaxArmySize()
+    {
+        int maxFoodInAllFarms = 0;
+
+        Farm[] farms = FindObjectsOfType<Farm>();
+
+        for (int i = 0; i < farms.Length; i++)
+        {
+            maxFoodInAllFarms += farms[i].maxFood;
+        }
+
+        maxArmySize = maxFoodInAllFarms;
     }
 
     public void CalculateGold(int amt)

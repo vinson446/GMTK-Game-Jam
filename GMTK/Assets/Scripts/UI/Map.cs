@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Map : MonoBehaviour
 {
@@ -13,7 +14,9 @@ public class Map : MonoBehaviour
     Upgrades upgrades;
 
     [Header("Stats For Each Battleground")]
-    BattleSettings[] battleSettings;
+    public TextMeshProUGUI townName;
+    public TextMeshProUGUI powerLevel;
+    public TextMeshProUGUI conquered;
 
     // Start is called before the first frame update
     void Start()

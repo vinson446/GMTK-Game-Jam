@@ -4419,7 +4419,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 535298473}
-    characterCount: 8
+    characterCount: 4
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -10672,7 +10672,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'MAX ARMY SIZE:'
+  m_text: 'CURRENT FOOD:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10741,10 +10741,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1063159735}
-    characterCount: 14
+    characterCount: 13
     spriteCount: 0
-    spaceCount: 2
-    wordCount: 3
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -18013,6 +18013,9 @@ MonoBehaviour:
   mapPanel: {fileID: 1204780035}
   shopPanel: {fileID: 1075324673}
   upgradeFarmPanel: {fileID: 833306562}
+  townName: {fileID: 0}
+  powerLevel: {fileID: 0}
+  conquered: {fileID: 0}
 --- !u!4 &1768495092
 Transform:
   m_ObjectHideFlags: 0
@@ -18688,10 +18691,12 @@ MonoBehaviour:
   hp: 30
   damage: 5
   atkSpeed: 1
+  armyLevel: 1
   currentArmySize: 0
   maxArmySize: 0
   boughtSoldiers: 0
   areasConquered: 00000000000000000000000000
+  currentFoodInAllFarms: 0
   farmsConquered: 000000000000000000
   levelOfFarms: 010000000100000001000000010000000100000001000000010000000100000001000000
   unlockedBarracks: 0
@@ -19224,6 +19229,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1879501273}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1904346237
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1904346238}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1904346238
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904346237}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1907239284
 PrefabInstance:
   m_ObjectHideFlags: 0
