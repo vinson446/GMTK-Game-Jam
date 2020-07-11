@@ -7,23 +7,25 @@ public class AiSpear : MonoBehaviour
     [Header("Assign")]
 
     public Animator animator;
-    public Transform attackPoint;
     public LayerMask enemyLayer;
     public LayerMask Ally;
-
+    [Header("AttackStats")]
+    public float  attakHeight=1;
+    public float atkRange =1;
+    public Transform attackPoint;
     [Header("Stats")]
     public float damageBuff = -1;
   
 
 //[Header("Attack")]
 
+    public Vector3 attackEndPoint;
 
     void Start()
     {
-
         animator = GetComponent<Animator>();
-        
 
+        attackEndPoint = new Vector3(attackPoint.position.x, attackPoint.position.y + attakHeight, attackPoint.position.z);
     }
 
     void Update()
@@ -33,12 +35,12 @@ public class AiSpear : MonoBehaviour
 
 
 
-    public void Attack(Transform meleeAtkPoint, float atkRange, float damage, bool isAlly)
+    public void Attack(float damage, bool isAlly)
     {
         animator.SetTrigger("Stab");
         if (isAlly != true)
         {
-            Collider[] enemiesHit = Physics.OverlapSphere(meleeAtkPoint.position, atkRange, Ally);
+            Collider[] enemiesHit = Physics.OverlapSphere(attackPoint.position, atkRange, Ally);
             foreach (Collider e in enemiesHit)
             {
                 Debug.Log(e.name +"Ally Spear");
@@ -48,7 +50,7 @@ public class AiSpear : MonoBehaviour
         }
         else
         {
-            Collider[] enemiesHit = Physics.OverlapSphere(meleeAtkPoint.position, atkRange, enemyLayer);
+            Collider[] enemiesHit = Physics.OverlapCapsule(attackPoint.position, attackEndPoint, atkRange, enemyLayer);
             foreach (Collider e in enemiesHit)
             {
                 Debug.Log(e.name + "Enemy Spear");
@@ -58,4 +60,14 @@ public class AiSpear : MonoBehaviour
             }
         }
     }
+
+
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(attackPoint.position, atkRange);
+    }
+
+    /
 }

@@ -111,7 +111,7 @@ public class Ally : MonoBehaviour
                         break;
                     case 2:
                         AiSpear weaponStats = GetComponentInChildren<AiSpear>();
-                        weaponStats.Attack(meleeAtkPoint, atkRange, damage, theFloatOfShame);
+                        weaponStats.Attack(damage, theFloatOfShame);
                         break;
                 }
         }
