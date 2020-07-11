@@ -18,7 +18,6 @@ public class Sword : MonoBehaviour
     public int numberOfClicks = 0;
     public float comboDelay =2f;
     float lastClickTime =0f;
-   
 
     void Start()
     {
@@ -27,7 +26,7 @@ public class Sword : MonoBehaviour
 
     }
 
-     void Update()
+    void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {

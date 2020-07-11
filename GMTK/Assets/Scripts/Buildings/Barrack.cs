@@ -30,10 +30,7 @@ public class Barrack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            UpgradeBarracks();
-        }
+
     }
 
     public void UpgradeBarracks()

@@ -122,7 +122,7 @@ public class Enemy : MonoBehaviour
 
             closestDistance = 1000000;
             FindTarget();
-;       }
+        }
     }
 
     private void OnDrawGizmosSelected()

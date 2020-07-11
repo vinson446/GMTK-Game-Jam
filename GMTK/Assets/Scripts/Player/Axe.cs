@@ -17,10 +17,12 @@ public class Axe : MonoBehaviour
     public float swingDamage=5f;
 
     private float holdCounter=0f;
+
     void Start()
     {
         animator = GetComponent<Animator>();
     }
+
 
     void Update()
     {

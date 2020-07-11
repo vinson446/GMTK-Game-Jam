@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    public float currentHP;
+    public float maxHP;
+
+    public float damage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +19,16 @@ public class PlayerStats : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void UpdatePlayerHP(float cHP, float mHP)
+    {
+        currentHP = cHP;
+        maxHP = mHP;
+    }
+
+    public void UpdatePlayerStats(float d)
+    {
+        damage = d;
     }
 }

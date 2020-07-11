@@ -14,7 +14,13 @@ public class GameManager : MonoBehaviour
     public int currentArmySize;
     public int maxArmySize;
 
+    public int boughtSoldiers;
+
+    [Header("Areas Conquered")]
+    public bool[] areasConquered;
+
     [Header("Farm")]
+    public bool[] farmsConquered;
     public int numberOfFarmsOwned;
 
     [Header("Barrack")]
@@ -59,7 +65,7 @@ public class GameManager : MonoBehaviour
             currentSoldiersInAllBarracks += barracks[i].currentNumOfSoldiers;
         }
 
-        currentArmySize = currentSoldiersInAllBarracks;
+        currentArmySize = currentSoldiersInAllBarracks + boughtSoldiers;
     }
 
     // get max army size from all the farms

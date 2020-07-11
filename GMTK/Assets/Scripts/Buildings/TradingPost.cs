@@ -29,21 +29,18 @@ public class TradingPost : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            if (gameManager.gold >= upgradeCost && levelOfTradingPost < maxLevelOfTradingPost)
-            {
-                levelOfTradingPost += 1;
-                goldGainOverTime += upgradeGoldAmount;
 
-                gameManager.CalculateGold(-upgradeCost);
-            }
-        }
     }
 
-    void UpgradeTradingPost()
+    public void UpgradeTradingPost()
     {
+        if (gameManager.gold >= upgradeCost && levelOfTradingPost < maxLevelOfTradingPost)
+        {
+            levelOfTradingPost += 1;
+            goldGainOverTime += upgradeGoldAmount;
 
+            gameManager.CalculateGold(-upgradeCost);
+        }
     }
 
     IEnumerator GainGoldOverTime()

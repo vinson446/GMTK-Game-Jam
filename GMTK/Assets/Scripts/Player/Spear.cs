@@ -15,10 +15,12 @@ public class Spear : MonoBehaviour
     public float holdTime = 3f;
 
     private float holdCounter = 0f;
+
     void Start()
     {
         animator = GetComponent<Animator>();
     }
+
 
     void Update()
     {

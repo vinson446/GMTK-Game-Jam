@@ -7,9 +7,13 @@ public class WeaponController : MonoBehaviour
 
     public int selectedWeapon = 0;
 
+    PlayerStats playerStats;
+
     // Start is called before the first frame update
     void Start()
     {
+        playerStats = FindObjectOfType<PlayerStats>();
+
         SelectedWeapon();
     }
 
@@ -59,6 +63,22 @@ public class WeaponController : MonoBehaviour
                 weapon.gameObject.SetActive(false);
             }
             i++;
+        }
+
+        if (selectedWeapon == 0)
+        {
+            Sword sword = transform.GetChild(0).GetComponent<Sword>();
+            playerStats.UpdatePlayerStats(sword.damage);
+        }
+        else if (selectedWeapon == 1)
+        {
+            Axe axe = transform.GetChild(1).GetComponent<Axe>();
+            playerStats.UpdatePlayerStats(axe.damage);
+        }
+        else if (selectedWeapon == 2)
+        {
+            Spear spear = transform.GetChild(2).GetComponent<Spear>();
+            playerStats.UpdatePlayerStats(spear.damage);
         }
     }
 }
