@@ -9,13 +9,15 @@ public class Sword : MonoBehaviour
     public Animator animator;
     public Transform attackPoint;
     public LayerMask enemyLayer;
+    public GameObject trails;
     [Header("Attack")]
     public float attackRange = 2f;
     public float damage = 5f;
 
+    public float attackTimmer=2f;
     public int numberOfClicks = 0;
     public float comboDelay =2f;
-     float lastClickTime =0f;
+    float lastClickTime =0f;
    
 
     void Start()
@@ -29,8 +31,13 @@ public class Sword : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            trails.gameObject.SetActive(true);
+
+           Debug.Log("Swing 1");
             Attack();
         }
+
+            //trails.gameObject.SetActive(false);
     }
 
    
@@ -48,7 +55,7 @@ public class Sword : MonoBehaviour
         {
             animator.SetBool("Attack2", true);
             HitDetection();
-
+          
         }
         else
         {
