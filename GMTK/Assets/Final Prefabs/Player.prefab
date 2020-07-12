@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &117763564
 Transform:
   m_ObjectHideFlags: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 117763563}
   m_LocalRotation: {x: -0.99445045, y: -0, z: -0, w: 0.10520596}
-  m_LocalPosition: {x: 2, y: 577.49994, z: -7.000041}
+  m_LocalPosition: {x: 2, y: 477, z: -15}
   m_LocalScale: {x: 1.5324, y: 1.5324, z: 1.5324}
   m_Children: []
   m_Father: {fileID: 7964112886090886475}
@@ -40,15 +40,15 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 117763563}
   serializedVersion: 6
-  lengthInSec: 0.3
+  lengthInSec: 0.2
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 0
+  looping: 1
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -231,7 +231,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.16509432, g: 0.8206281, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1312,7 +1312,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.11764705, g: 1, b: 0.22390293, a: 1}
+        key0: {r: 0.11764705, g: 0.8039513, b: 1, a: 1}
         key1: {r: 0.6367924, g: 0.92066777, b: 1, a: 0}
         key2: {r: 1, g: 1, b: 1, a: 1}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -9534,7 +9534,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &958800248
 Transform:
   m_ObjectHideFlags: 0
@@ -9543,7 +9543,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 958800247}
   m_LocalRotation: {x: -0.99445045, y: -0, z: -0, w: 0.10520596}
-  m_LocalPosition: {x: 2, y: 577.49994, z: -7.000041}
+  m_LocalPosition: {x: 2, y: 477, z: -15}
   m_LocalScale: {x: 1.5324, y: 1.5324, z: 1.5324}
   m_Children: []
   m_Father: {fileID: 7964112886090886475}
@@ -9557,15 +9557,15 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 958800247}
   serializedVersion: 6
-  lengthInSec: 0.3
+  lengthInSec: 0.2
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 0
+  looping: 1
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -9748,7 +9748,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0.3773585, b: 0.023584906, a: 1}
+      maxColor: {r: 0, g: 0.259213, b: 0.754717, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -10829,7 +10829,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.0024029962, g: 0.509434, b: 0.06324666, a: 1}
+        key0: {r: 0.0039215535, g: 0.16104853, b: 0.50980395, a: 1}
         key1: {r: 0.6367924, g: 0.92066777, b: 1, a: 0}
         key2: {r: 1, g: 1, b: 1, a: 1}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -14365,7 +14365,7 @@ MonoBehaviour:
     m_Bits: 1024
   trails: {fileID: 7964112885078552827}
   attackRange: 2
-  damage: 4
+  damage: 2
   attackTimmer: 2
   numberOfClicks: 0
   comboDelay: 3
@@ -19404,7 +19404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7964112886090886475
 Transform:
   m_ObjectHideFlags: 0
@@ -19439,12 +19439,12 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
-  attackRange: 2
+  attackRange: 8
   damage: 5
   holdTime: 3
   p:
-  - {fileID: 117763566}
-  - {fileID: 958800250}
+  - {fileID: 117763563}
+  - {fileID: 958800247}
 --- !u!33 &7964112886090886476
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -19581,9 +19581,10 @@ MonoBehaviour:
   moveSpeed: 10
   sprintSpeed: 15
   jumpForce: 10
-  rotationSmoothing: 0
+  rotationSmoothing: 10
   cameraTransform: {fileID: 0}
   gravity: -9.81
+  moveDirection: {x: 0, y: 0, z: 0}
   isGrounded: 0
   groundChecker: {fileID: 7964112885936029193}
   groundCheckerRadius: 0.5

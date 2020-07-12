@@ -48,28 +48,33 @@ public class Tier1 : MonoBehaviour
         
     }
 
+    /*
     public void StartBattle(int index)
     {
         Debug.Log("Started Fight");
         gameManager.StartBattle(index, allyAmnt, enemyAmnt, number);
     }
-    
+    */
+
     public void UpgradeUI(bool activate)
     {
         upgradeCanvas.SetActive(activate);
     }
 
+    /*
     public void AttackUI(bool activate)
     {
         AttackCanvas.SetActive(activate);
     }
 
+    
     public void UpdateStatus()
     {
         owned = true;
         farm.SetActive(true);
         gameManager.AddTown();
     }
+    */
 
 
 

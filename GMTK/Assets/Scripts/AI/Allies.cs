@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Allies : MonoBehaviour
 {
@@ -35,8 +36,18 @@ public class Allies : MonoBehaviour
 
     void Die()
     {
-      
+        if (playerStats == null)
+            battleManager.AllyDies();
 
         gameObject.SetActive(false);
+    }
+
+    public void ReturnToMap(bool battleStatus)
+    {
+        if (battleStatus)
+            SceneManager.LoadScene(2);
+        else
+            SceneManager.LoadScene(0);
+        // UpdateTowns(townNumberHolder,battleStatus);
     }
 }

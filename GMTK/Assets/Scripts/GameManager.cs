@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour
 {
     [Header("Player Stats")]
     public int gold;
-    public int hp;
+    public float currentHP;
+    public float maxHP;
     public float damage;
     public float atkSpeed;
 
@@ -70,7 +71,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         tier1 = GameObject.FindGameObjectsWithTag("Tier1");
-        SetTownNumbers();
+        // SetTownNumbers();
 
 
         if (instance == null)
@@ -86,7 +87,8 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        InvokeRepeating("CalculateCurrentArmySize", 0f, 1f);
+        InvokeRepeating("CalculateCurrentArmySize", 0f, 10f);
+        InvokeRepeating("FoodCalculation", 0, 1);
     }
     // Update is called once per frame
     void Update()
@@ -136,9 +138,7 @@ public class GameManager : MonoBehaviour
         }
 
         currentArmySize += currentSoldiersInAllBarracks;
-        FoodCalculation();
-        if (totalFoodAmmount < currentArmySize)
-            currentArmySize--;
+        // FoodCalculation();
         
     }
 
@@ -155,6 +155,9 @@ public class GameManager : MonoBehaviour
         if (totalFoodAmmount < 0)
             totalFoodAmmount = 0;
 
+        if (totalFoodAmmount < currentArmySize)
+            currentArmySize--;
+
     }
 
     public void CalculateGold(int amt)
@@ -166,7 +169,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-
+    /*
     public void StartBattle(int index,int alliesAmnt,int enemiesAmnt, int townNumber)
     {
         
@@ -175,12 +178,10 @@ public class GameManager : MonoBehaviour
         townNumberHolder = townNumber;
         SceneManager.LoadScene(index);
     }
-    public void ReturnToMap(int index,bool battleStatus)
-    {
-        SceneManager.LoadScene(index);
-        UpdateTowns(townNumberHolder,battleStatus);
-    }
+    */
 
+
+    /*
     public void SetTownNumbers()
     {
         for (int i = 0; i < tier1.Length; i++)
@@ -190,14 +191,16 @@ public class GameManager : MonoBehaviour
             
         }
     }
-
+   
     public void UpdateTowns(int townNumber,bool battleStatus)
     {
         tier1[townNumber].GetComponent<Tier1>().UpdateStatus();
         Debug.Log("Town Number " + townNumber + " is named " + tier1[townNumber].GetComponent<Tier1>().name+"has won");
         FindObjectOfType<Map>().ShowMapPanel();
     }
+    */
 
+    /*
     public void AddTown()
     {
         townNumberHolder++;
@@ -214,6 +217,7 @@ public class GameManager : MonoBehaviour
             curretTier = 2;
         }
     }
+    */
 
 
 }

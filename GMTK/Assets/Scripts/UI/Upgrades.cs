@@ -89,12 +89,12 @@ public class Upgrades : MonoBehaviour
 
     public void PurchaseBarracks()
     {
-        if (!gameManager.purchasedBarracks && gameManager.gold >= buyBarracksCost&& gameManager.unlockedBarracks)
+        if (!gameManager.purchasedBarracks && gameManager.gold >= buyBarracksCost && gameManager.unlockedBarracks)
         {
             //Instantiate(barrack, Vector3.zero, Quaternion.identity);
             barrack.SetActive(true);
 
-            gameManager.purchasedTradingPost = true;
+            gameManager.purchasedBarracks = true;
 
             buyBarracksButton.interactable = false;
 
@@ -124,17 +124,22 @@ public class Upgrades : MonoBehaviour
             // Instantiate(hospital, Vector3.zero, Quaternion.identity);
             hospital.SetActive(true);
 
-            gameManager.unlockedHospital = true;
+            gameManager.purchasedHospital = true;
 
+            h = FindObjectOfType<Hospital>();
             hospitalChangeText.text = "BUY HEAL";
-            hospitalDescriptionChangeText.text = "+" + h.playerHeal.ToString() + " Player HP";
+            hospitalDescriptionChangeText.text = "+" + h.playerHeal.ToString() + " Player HP" + " (Current HP: " + gameManager.currentHP.ToString() + ")";
 
             gameManager.gold -= buyHospitalCost;
         }
         else if (gameManager.purchasedHospital && gameManager.gold >= buyHospitalCost)
         {
-            Allies player = FindObjectOfType<Allies>();
-            player.TakeDamage(-h.playerHeal);
+            h = FindObjectOfType<Hospital>();
+
+            gameManager.currentHP += h.playerHeal;
+
+            if (gameManager.currentHP > gameManager.maxHP)
+                gameManager.currentHP = gameManager.maxHP;
         }
     }
 
@@ -156,43 +161,55 @@ public class Upgrades : MonoBehaviour
 
     public void UpgradeBarracks()
     {
-        b = FindObjectOfType<Barrack>();
+        if (gameManager.purchasedBarracks)
+        {
+            b = FindObjectOfType<Barrack>();
 
-        if (b.levelOfBarrack >= b.maxLevelOfBarrack)
-        {
-            upgradeBarracksButton.interactable = false;
-        }
-        else
-        {
-            b.UpgradeBarracks();
+            if (b.levelOfBarrack >= 2)
+            {
+                b.UpgradeBarracks();
+                upgradeBarracksButton.interactable = false;
+            }
+            else
+            {
+                b.UpgradeBarracks();
+            }
         }
     }
 
     public void UpgradeTradingPost()
     {
-        t = FindObjectOfType<TradingPost>();
+        if (gameManager.purchasedTradingPost)
+        {
+            t = FindObjectOfType<TradingPost>();
 
-        if (t.levelOfTradingPost >= t.maxLevelOfTradingPost)
-        {
-            upgradeTradingPostButton.interactable = false;
-        }
-        else
-        {
-            t.UpgradeTradingPost();
+            if (t.levelOfTradingPost >= 2)
+            {
+                t.UpgradeTradingPost();
+                upgradeTradingPostButton.interactable = false;
+            }
+            else
+            {
+                t.UpgradeTradingPost();
+            }
         }
     }
 
     public void UpgradeHospital()
     {
-        h = FindObjectOfType<Hospital>();
+        if (gameManager.purchasedHospital)
+        {
+            h = FindObjectOfType<Hospital>();
 
-        if (h.currentLevelOfHospital >= h.maxLevelOfHospital)
-        {
-            upgradeHospitalButton.interactable = false;
-        }
-        else
-        {
-            h.UpgradeHospital();
+            if (h.currentLevelOfHospital >= 2)
+            {
+                h.UpgradeHospital();
+                upgradeHospitalButton.interactable = false;
+            }
+            else
+            {
+                h.UpgradeHospital();
+            }
         }
     }
 }

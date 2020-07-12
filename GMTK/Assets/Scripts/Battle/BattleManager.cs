@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.AI;
 
 public class BattleManager : MonoBehaviour
 {
@@ -46,6 +47,9 @@ public class BattleManager : MonoBehaviour
     public TextMeshProUGUI rewardGoldText;
     public TextMeshProUGUI allyCasualtiesText;
     public TextMeshProUGUI enemyCasualtiesText;
+
+    public Button continueButtonW;
+    public Button continueButtonL;
 
     [Header("Player UI")]
     public Slider hpBar;
@@ -114,12 +118,18 @@ public class BattleManager : MonoBehaviour
         BattleResults(0);
     }
 
-    
+    public void AllyDies()
+    {
+        numAlliesRemaining -= 1;
+        gameManager.currentArmySize -= 1;
+
+        if (gameManager.currentArmySize < 0)
+            gameManager.currentArmySize = 0;
+    }
 
     public void EnemyDies()
     {
         numEnemiesRemaining -= 1;
-        gameManager.currentArmySize -= 1;
 
         if (numEnemiesRemaining <= 0)
             BattleResults(2);
@@ -128,6 +138,31 @@ public class BattleManager : MonoBehaviour
     void BattleResults(int outcome)
     {
         battleResultsPanel.SetActive(true);
+        Cursor.visible = true;
+
+        Animator[] anim = FindObjectsOfType<Animator>();
+        foreach (Animator a in anim)
+        {
+            a.enabled = false;
+        }
+        NavMeshAgent[] agent = FindObjectsOfType<NavMeshAgent>();
+        foreach (NavMeshAgent n in agent)
+        {
+            n.enabled = false;
+        }
+        this.enabled = false;
+
+        Ally[] ally = FindObjectsOfType<Ally>();
+        foreach (Ally a in ally)
+        {
+            a.enabled = false;
+        }
+
+        Enemy[] enemy = FindObjectsOfType<Enemy>();
+        foreach (Enemy e in enemy)
+        {
+            e.enabled = false;
+        }
 
         switch (outcome)
         {
@@ -137,7 +172,8 @@ public class BattleManager : MonoBehaviour
                 loseDescriptionText.text = "You have died in battle.";
                 allyCasualtiesText.text = (numAlliesToSpawn - numAlliesRemaining).ToString();
                 enemyCasualtiesText.text = (numEnemiesToSpawn - numEnemiesRemaining).ToString();
-                gameManager.ReturnToMap(0, false);
+                continueButtonL.gameObject.SetActive(true);
+                //gameManager.ReturnToMap(0, false);
                 break;
 
             // lose - all allies die
@@ -146,14 +182,17 @@ public class BattleManager : MonoBehaviour
             // win - all enemies die
             case 2:
                 battleResultsText.text = "VICTORY";
-                battleRewardsText.text = "BATTLE REWARDS";
-                rewardExpText.text = "+" + rewardExp.ToString() + " EXP";
-                rewardGoldText.text = "+" + rewardGold.ToString() + " GOLD";
+                battleRewardsText.text = "BATTLE   REWARDS";
+                rewardGoldText.text = "+ " + rewardGold.ToString() + " GOLD";
                 allyCasualtiesText.text = (numAlliesToSpawn - numAlliesRemaining).ToString();
                 enemyCasualtiesText.text = (numEnemiesToSpawn - numEnemiesRemaining).ToString();
 
+                gameManager.gold += rewardGold;
+                gameManager.currentHP = playerStats.currentHP;
+
+                continueButtonW.gameObject.SetActive(true);
                 gameManager.areasConquered[battleFieldNumber] = true;
-                gameManager.ReturnToMap(0, true);
+                //gameManager.ReturnToMap(0, true);
                 break;
         }
     }

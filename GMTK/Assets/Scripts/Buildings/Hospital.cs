@@ -32,6 +32,8 @@ public class Hospital : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame

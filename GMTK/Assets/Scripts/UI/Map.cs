@@ -27,6 +27,7 @@ public class Map : MonoBehaviour
         shopPanel.SetActive(false);
         ShowMapPanel();
 
+        Cursor.visible = true;
     }
 
     // Update is called once per frame
@@ -39,12 +40,12 @@ public class Map : MonoBehaviour
 
     public void ShowShopPanel()
     {
-        HideMapPanel();
+        // HideMapPanel();
         upgradeFarmPanel.SetActive(false);
         shopPanel.SetActive(true);
     }
 
-    
+
 
 
     public void ShowFarmUpgradePanel()
@@ -54,6 +55,7 @@ public class Map : MonoBehaviour
         upgradeFarmPanel.SetActive(true);
         shopPanel.SetActive(false);
 
+        /*
         for (int i = 0; i < gameManager.tier1.Length; i++)
         {
             if (!gameManager.tier1[i].GetComponent<Tier1>().owned)
@@ -66,18 +68,21 @@ public class Map : MonoBehaviour
                 gameManager.tier1[i].GetComponent<Tier1>().UpgradeUI(true);
             }
         }
+        */
     }
     public void HideFarmUpgradePanel()
     {
-        
+
         upgradeFarmPanel.SetActive(false);
         shopPanel.SetActive(true);
 
+        /*
         for (int i = 0; i < gameManager.tier1.Length; i++)
         {
              gameManager.tier1[i].GetComponent<Tier1>().UpgradeUI(false);
           
         }
+        */
     }
     public void ShowMapPanel()
     {
@@ -85,6 +90,7 @@ public class Map : MonoBehaviour
         upgradeFarmPanel.SetActive(false);
         shopPanel.SetActive(false);
 
+        /*
        for (int i = 0; i < gameManager.tier1.Length; i++)
         {
             if (!gameManager.tier1[i].GetComponent<Tier1>().owned)
@@ -97,26 +103,20 @@ public class Map : MonoBehaviour
                 gameManager.tier1[i].GetComponent<Tier1>().AttackUI(false);
             }
         }
+        */
     }
+    /*
     public void HideMapPanel()
     {
         mapPanel.SetActive(false);
 
+        /*
         for (int i = 0; i < gameManager.tier1.Length; i++)
         {
             gameManager.tier1[i].GetComponent<Tier1>().AttackUI(false);
 
         }
+        
     }
-
-
-
-
-
-
-
-
-
-
-
+    */
 }
