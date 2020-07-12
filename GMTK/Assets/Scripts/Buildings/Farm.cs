@@ -21,7 +21,7 @@ public class Farm : MonoBehaviour
 
     GameManager gameManager;
 
-    Farm instance;
+    static Farm instance;
 
     // Start is called before the first frame update
     void Start()
@@ -31,11 +31,11 @@ public class Farm : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 

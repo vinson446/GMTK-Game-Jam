@@ -22,7 +22,7 @@ public class Upgrades : MonoBehaviour
 
     [Header("Buildings")]
     public GameObject barrack;
-    public GameObject[] farm;
+    public GameObject farm;
     public GameObject tradingPost;
     public GameObject hospital;
 
@@ -85,6 +85,11 @@ public class Upgrades : MonoBehaviour
 
             
         }
+    }
+
+    public void GetFarm()
+    {
+        farm.SetActive(true);
     }
 
     public void PurchaseBarracks()
@@ -151,8 +156,7 @@ public class Upgrades : MonoBehaviour
         }
         else
         {
-            gameManager.levelOfFarms[index] += 1;
-            farm[index].GetComponent<Farm>().UpgradeFarm();
+            farm.GetComponent<Farm>().UpgradeFarm();
         }
 
         Map map = FindObjectOfType<Map>();

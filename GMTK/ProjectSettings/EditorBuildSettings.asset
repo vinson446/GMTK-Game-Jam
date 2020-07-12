@@ -12,9 +12,33 @@ EditorBuildSettings:
     path: Assets/Scenes/LORE.unity
     guid: 2cdc1afe510c0cf4aba8c61e72d4afc1
   - enabled: 1
-    path: Assets/Scenes/MAP TEST.unity
-    guid: 746b26a172394f249a1eaee6894bee73
+    path: Assets/Scenes/MAPPPP.unity
+    guid: 0b5cd96c87aa6d143a99536677691c71
   - enabled: 1
     path: Assets/Scenes/BATTLE 1.unity
     guid: b328357edd2a3bc47b671c4d9056d2f0
+  - enabled: 1
+    path: Assets/Scenes/BATTLE 2.unity
+    guid: 5ab92986d1600ac4fb5258b7cd71fa74
+  - enabled: 1
+    path: Assets/Scenes/BATTLE 3.unity
+    guid: 2e9105575a1d7794eb87287e4a566a11
+  - enabled: 1
+    path: Assets/Scenes/BATTLE 4.unity
+    guid: dff7b0c6d75fc2346b0406ed6dfe4da6
+  - enabled: 1
+    path: Assets/Scenes/BATTLE 5.unity
+    guid: ec044a2c6c42cfc44ac1e020d4bdd9d5
+  - enabled: 1
+    path: Assets/Scenes/BATTLE 6.unity
+    guid: 1ce330518055f0f43b1b0bd0e4a941d2
+  - enabled: 1
+    path: Assets/Scenes/BATTLE 7.unity
+    guid: 20122ca3db5b1a6438686f810efe846b
+  - enabled: 1
+    path: Assets/Scenes/BATTLE 8.unity
+    guid: 4287018bb0d3f43419d2ab696a49ba53
+  - enabled: 1
+    path: Assets/Scenes/BATTLE 9.unity
+    guid: a169e24bfbeff2b4bbf61be70baf9d37
   m_configObjects: {}

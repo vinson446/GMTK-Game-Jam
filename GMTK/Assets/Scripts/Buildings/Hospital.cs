@@ -18,7 +18,7 @@ public class Hospital : MonoBehaviour
 
     GameManager gameManager;
 
-    Hospital instance;
+    static Hospital instance;
      
     // Start is called before the first frame update
     void Start()
@@ -26,11 +26,11 @@ public class Hospital : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
         gameManager = FindObjectOfType<GameManager>();

@@ -40,6 +40,7 @@ public class BattleManager : MonoBehaviour
 
     [Header("UI Settings")]
     public GameObject battleResultsPanel;
+    public GameObject playerUIPanel;
     public TextMeshProUGUI battleResultsText;
     public TextMeshProUGUI loseDescriptionText;
     public TextMeshProUGUI battleRewardsText;
@@ -58,11 +59,13 @@ public class BattleManager : MonoBehaviour
     PlayerStats playerStats;
 
     GameManager gameManager;
+    public bool skip = true;
+
+    public GameObject farm;
 
     // Start is called before the first frame update
     void Start()
     {
-        battleResultsPanel.SetActive(false);
         gameManager = FindObjectOfType<GameManager>();
 
         numAlliesToSpawn = gameManager.battleAllies;
@@ -138,6 +141,7 @@ public class BattleManager : MonoBehaviour
     void BattleResults(int outcome)
     {
         battleResultsPanel.SetActive(true);
+        playerUIPanel.SetActive(false);
         Cursor.visible = true;
 
         Animator[] anim = FindObjectsOfType<Animator>();
@@ -183,16 +187,28 @@ public class BattleManager : MonoBehaviour
             case 2:
                 battleResultsText.text = "VICTORY";
                 battleRewardsText.text = "BATTLE   REWARDS";
-                rewardGoldText.text = "+ " + rewardGold.ToString() + " GOLD";
+                rewardGoldText.text = "+  " + rewardGold.ToString() + "   GOLD";
                 allyCasualtiesText.text = (numAlliesToSpawn - numAlliesRemaining).ToString();
                 enemyCasualtiesText.text = (numEnemiesToSpawn - numEnemiesRemaining).ToString();
 
                 gameManager.gold += rewardGold;
                 gameManager.currentHP = playerStats.currentHP;
 
+                if (!skip)
+                {
+                    Farm farm = FindObjectOfType<Farm>();
+                    farm.UpgradeFarm();
+                }
+                else
+                {
+                    farm.SetActive(true);
+                    skip = false;
+                }
+
                 continueButtonW.gameObject.SetActive(true);
                 gameManager.areasConquered[battleFieldNumber] = true;
-                //gameManager.ReturnToMap(0, true);
+
+
                 break;
         }
     }

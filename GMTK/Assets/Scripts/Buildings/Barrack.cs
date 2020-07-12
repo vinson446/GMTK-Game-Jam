@@ -19,7 +19,7 @@ public class Barrack : MonoBehaviour
 
     GameManager gameManager;
 
-    Barrack instance;
+    static Barrack instance;
 
     // Start is called before the first frame update
     void Start()
@@ -29,11 +29,11 @@ public class Barrack : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 

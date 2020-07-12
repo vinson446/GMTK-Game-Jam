@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9046925804348139038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9046925804348139036}
+  - component: {fileID: 9046925804348139037}
+  m_Layer: 0
+  m_Name: Battle Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9046925804348139036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9046925804348139038}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9046925804348139037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9046925804348139038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e5426e9d6d8e9445a104ca9c0f2d314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ally:
+  - {fileID: 4197995876592374518, guid: 4bd45fbfb9d05a04cbc52be86bcd2bcd, type: 3}
+  - {fileID: 4437212799376949470, guid: ddd9c1683a35a79478917f3718859414, type: 3}
+  - {fileID: 9015239548561551035, guid: ce7348cbef26a4146b36fc253dbc864c, type: 3}
+  enemy:
+  - {fileID: 5615993899943328332, guid: 9843a2f498668d449bcf3bac733b1bb4, type: 3}
+  - {fileID: 1871517809337652337, guid: 3ad6699de0537344bb8330321823c787, type: 3}
+  - {fileID: 1537053203569845835, guid: 9f04aa50cac39924dbb3682b9842c5dc, type: 3}
+  numAlliesToSpawn: 100
+  numEnemiesToSpawn: 100
+  allySpawnMinX: 52
+  allySpawnMaxX: 120
+  allySpawnMinZ: 47
+  allySpawnMaxZ: 76
+  enemySpawnMinX: 51
+  enemySpawnMaxX: 120
+  enemySpawnMinZ: 140
+  enemySpawnMaxZ: 170
+  battleFieldNumber: 0
+  minAllyHP: 0
+  maxAllyHP: 0
+  minEnemyHP: 0
+  maxEnemyHP: 0
+  numAlliesRemaining: 0
+  numEnemiesRemaining: 0
+  rewardGold: 50
+  rewardExp: 0
+  battleResultsPanel: {fileID: 0}
+  battleResultsText: {fileID: 0}
+  loseDescriptionText: {fileID: 0}
+  battleRewardsText: {fileID: 0}
+  rewardExpText: {fileID: 0}
+  rewardGoldText: {fileID: 0}
+  allyCasualtiesText: {fileID: 0}
+  enemyCasualtiesText: {fileID: 0}
+  continueButtonW: {fileID: 0}
+  continueButtonL: {fileID: 0}
+  hpBar: {fileID: 0}
+  hpText: {fileID: 0}
+  army: {fileID: 0}
+  skip: 1
+  farm: {fileID: 0}

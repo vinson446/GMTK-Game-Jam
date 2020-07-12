@@ -19,10 +19,12 @@ public class GameManager : MonoBehaviour
 
     [Header("Areas Conquered")]
     public bool[] areasConquered;
+    public GameObject[] buttonOfArea;
 
     [Header("Farm")]
     public bool[] farmsConquered;
     public int[] levelOfFarms;
+    public GameObject[] farm;
 
     [Header("Barrack")]
     public bool purchasedBarracks = false;
@@ -65,24 +67,26 @@ public class GameManager : MonoBehaviour
 
     public int townNumberHolder;
 
-    GameManager instance;
+    static GameManager instance;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        tier1 = GameObject.FindGameObjectsWithTag("Tier1");
-        // SetTownNumbers();
-
-
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+
+    void Start()
+    {
+        tier1 = GameObject.FindGameObjectsWithTag("Tier1");
+        // SetTownNumbers();
     }
 
     private void OnEnable()

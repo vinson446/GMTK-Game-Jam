@@ -14365,7 +14365,7 @@ MonoBehaviour:
     m_Bits: 1024
   trails: {fileID: 7964112885078552827}
   attackRange: 2
-  damage: 2
+  damage: 4
   attackTimmer: 2
   numberOfClicks: 0
   comboDelay: 3
@@ -19873,7 +19873,7 @@ MonoBehaviour:
   attackRange: 2
   damage: 6
   holdTime: 3
-  swingDamage: 5
+  swingDamage: 12
   glow: {fileID: 191751289}
 --- !u!95 &7964112886259686233
 Animator:
