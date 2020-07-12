@@ -38,6 +38,10 @@ public class Allies : MonoBehaviour
     {
         if (playerStats == null)
             battleManager.AllyDies();
+        else
+        {
+            battleManager.PlayerDies();
+        }
 
         gameObject.SetActive(false);
     }
@@ -48,7 +52,7 @@ public class Allies : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
 
         // win
-        if (gameManager.areasConquered[12] && battleStatus)
+        if (gameManager.areasConquered[12])
         {
             SceneManager.LoadScene(16);
         }

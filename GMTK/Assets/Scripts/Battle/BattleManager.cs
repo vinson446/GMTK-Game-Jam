@@ -83,6 +83,13 @@ public class BattleManager : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+            Application.Quit();
+
+    }
+
     public void UpdatePlayerUI()
     {
         hpBar.maxValue = playerStats.maxHP;
@@ -172,6 +179,7 @@ public class BattleManager : MonoBehaviour
         {
             // lose - player dies
             case 0:
+                print("YO");
                 battleResultsText.text = "DEFEAT";
                 loseDescriptionText.text = "You have died in battle.";
                 allyCasualtiesText.text = (numAlliesToSpawn - numAlliesRemaining).ToString();
