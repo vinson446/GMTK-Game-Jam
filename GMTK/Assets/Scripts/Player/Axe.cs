@@ -51,27 +51,27 @@ public class Axe : MonoBehaviour
     void Attack()
     {
         animator.SetBool("Swing", true);
-        HitDetection();
+        HitDetection(damage);
         animator.SetBool("ChargeAxe", false);
 
     }
     void SpinAttack()
     {
         animator.SetBool("Spin", true);
-        HitDetection();
+        HitDetection(swingDamage);
         animator.SetBool("ChargeAxe", false);
     }
     public void SpinPlayer()
     {
         player.SetTrigger("Spin");
     }
-public void HitDetection()
+public void HitDetection(float damage)
     {
         Collider[] hitEneimes = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
 
         foreach (Collider enemy in hitEneimes)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(damage+swingDamage);
+            enemy.GetComponent<Enemy>().TakeDamage(damage);
         }
     }
 

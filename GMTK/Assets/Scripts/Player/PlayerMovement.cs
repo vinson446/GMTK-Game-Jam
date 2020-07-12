@@ -91,11 +91,12 @@ public class PlayerMovement : MonoBehaviour
 
         charController.Move(moveDirection * Time.deltaTime * tmpSpeed);
 
-        
+      
         // rotation
         if (movement != Vector3.zero)
+        {
             transform.forward = moveDirection;
-
+        }
 
         // jump
         if (Input.GetButton("Jump") && isGrounded)

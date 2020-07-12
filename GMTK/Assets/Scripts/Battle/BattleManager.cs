@@ -73,7 +73,7 @@ public class BattleManager : MonoBehaviour
             float x = Random.Range(allySpawnMinX, allySpawnMaxX);
             float z = Random.Range(allySpawnMinZ, allySpawnMaxZ);
 
-            Vector3 randomPos = new Vector3(x, 0, z);
+            Vector3 randomPos = new Vector3(x, -0.5f, z);
 
             Instantiate(ally[Random.Range(0,3)], randomPos, Quaternion.identity);
         }
@@ -84,7 +84,7 @@ public class BattleManager : MonoBehaviour
             float x = Random.Range(enemySpawnMinX, enemySpawnMaxX);
             float z = Random.Range(enemySpawnMinZ, enemySpawnMaxZ);
 
-            Vector3 randomPos = new Vector3(x, 0, z);
+            Vector3 randomPos = new Vector3(x, -0.5f, z);
 
             Instantiate(enemy[Random.Range(0,3)], randomPos, Quaternion.identity);
         }

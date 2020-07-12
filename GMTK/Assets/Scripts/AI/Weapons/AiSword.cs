@@ -38,7 +38,7 @@ public class AiSword: MonoBehaviour
             Collider[] enemiesHit = Physics.OverlapSphere(attackPoint.position, atkRange, enemyLayer);
             foreach (Collider e in enemiesHit)
             {
-                Debug.Log(e.name + "Ally Spear");
+
                 if (e.GetComponent<Allies>() != null)
                     e.GetComponent<Allies>().TakeDamage(damage);
             }
@@ -48,11 +48,17 @@ public class AiSword: MonoBehaviour
             Collider[] enemiesHit = Physics.OverlapSphere(attackPoint.position, atkRange, Ally);
             foreach (Collider e in enemiesHit)
             {
-                Debug.Log(e.name + "Enemy Spear");
+
 
                 if (e.GetComponent<Enemy>() != null)
                     e.GetComponent<Enemy>().TakeDamage(damage);
             }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(attackPoint.position, atkRange);
     }
 }

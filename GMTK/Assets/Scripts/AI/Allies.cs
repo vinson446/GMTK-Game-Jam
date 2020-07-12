@@ -21,7 +21,6 @@ public class Allies : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        Debug.Log("oof");
         // hurt vfx
         // hurt sfx
 

@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     public Transform target;
     public float stopToAtkRange;
     public LayerMask allyLayer;
-    bool theFloatOfShame = false;
+    public bool isAlly = false;
 
     // finding closest target
     float distance;
@@ -32,6 +32,11 @@ public class Enemy : MonoBehaviour
     // references
     NavMeshAgent agent;
     BattleManager battleManager;
+
+    private void Awake()
+    {
+        // FindTarget();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -51,21 +56,27 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         MoveToTarget();
-        FaceTarget();
-       
+        FaceTarget();     
     }
+
     void SelectWeapon()
     {
         int i = Random.Range(1, 10);
-        if (i >= 7)
+        if (i >= 5)
         {
             selectedWeapon = 1f;
             transform.Find("Sword").gameObject.SetActive(true);
+            stopToAtkRange = 5;
+            atkSpeed = 2f;
+            damage = 4;
         }
         else
         {
             selectedWeapon = 2f;
             transform.Find("Spear").gameObject.SetActive(true);
+            stopToAtkRange = 6;
+            atkSpeed = 4f;
+            damage = 1;
         }
     }
 
@@ -106,15 +117,16 @@ public class Enemy : MonoBehaviour
         if (Time.time >= nextAttack)
         {
             nextAttack = Time.time + 1 / atkSpeed;
+
             switch (selectedWeapon)
             {
                 case 1:
                     AiSword swordStats = GetComponentInChildren<AiSword>();
-                    swordStats.Attack(damage, theFloatOfShame);
+                    swordStats.Attack(damage, isAlly);
                     break;
                 case 2:
                     AiSpear weaponStats = GetComponentInChildren<AiSpear>();
-                    weaponStats.Attack(damage, theFloatOfShame);
+                    weaponStats.Attack(damage, isAlly);
                     break;
 
             }

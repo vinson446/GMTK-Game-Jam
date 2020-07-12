@@ -57,4 +57,11 @@ public class Spear : MonoBehaviour
             enemy.GetComponent<Enemy>().TakeDamage(damage+holdDamage);
         }
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
 }
