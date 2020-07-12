@@ -15,6 +15,7 @@ public class Spear : MonoBehaviour
     public float holdTime = 3f;
 
     private float holdCounter = 0f;
+    public GameObject[] p;
 
     void Start()
     {
@@ -28,14 +29,25 @@ public class Spear : MonoBehaviour
         {
            
             holdCounter += Time.deltaTime;
+            p[0].SetActive(true);
+            p[1].SetActive(true);
             animator.SetBool("Charge", true);
         }
         if (Input.GetMouseButtonUp(0))
         {
                 Attack();
                 holdCounter = 0;
+            StartCoroutine(GlowDisappear());
         }
     }
+
+    IEnumerator GlowDisappear()
+    {
+        yield return new WaitForSeconds(0.5f);
+        p[0].SetActive(false);
+        p[1].SetActive(false);
+    }
+
     void Attack()
     {
         animator.SetBool("Stab", true);

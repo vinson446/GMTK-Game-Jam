@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1775612196144182829}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: AtkPos
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1775612197560122993}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: AtkPos
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 5072842163465780350}
   - component: {fileID: 99610609609551625}
   - component: {fileID: 7264838848369451572}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,10 +178,10 @@ MonoBehaviour:
   atkRange: 3
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1024
   Ally:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
 --- !u!1 &5615993899943328332
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 5615993899943328335}
   - component: {fileID: 5615993899943328334}
   - component: {fileID: 5615993899943328333}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Enemy 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 4981762119186878604}
   - component: {fileID: 845190746015516327}
   - component: {fileID: 490819274924048919}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Spear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -443,10 +443,10 @@ MonoBehaviour:
   animator: {fileID: 845190746015516327}
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1024
   Ally:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   attakHeight: 5
   atkRange: 3
   attackPoint: {fileID: 1775612197560122993}

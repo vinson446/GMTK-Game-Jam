@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform cameraTransform;
     public float gravity = 1000;
 
-    Vector3 moveDirection;
+    public Vector3 moveDirection;
     Vector3 jumpVelocity;
     float tmpSpeed;
 
@@ -93,10 +93,19 @@ public class PlayerMovement : MonoBehaviour
 
       
         // rotation
+        
         if (movement != Vector3.zero)
         {
             transform.forward = moveDirection;
         }
+        /*
+        if (moveDirection.x != 0 || moveDirection.z != 0)
+        {
+            var dir = moveDirection;
+            dir.y = 0;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), rotationSmoothing);
+        }
+        */
 
         // jump
         if (Input.GetButton("Jump") && isGrounded)

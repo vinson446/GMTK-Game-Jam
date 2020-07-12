@@ -119,6 +119,8 @@ public class Ally : MonoBehaviour
                         weaponStats.Attack(damage, isAlly);
                         break;
                 }
+                closestDistance = 1000000;
+                FindTarget();
         }
     }
 

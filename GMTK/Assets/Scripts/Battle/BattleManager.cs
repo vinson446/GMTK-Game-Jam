@@ -47,6 +47,12 @@ public class BattleManager : MonoBehaviour
     public TextMeshProUGUI allyCasualtiesText;
     public TextMeshProUGUI enemyCasualtiesText;
 
+    [Header("Player UI")]
+    public Slider hpBar;
+    public TextMeshProUGUI hpText;
+    public TextMeshProUGUI army;
+    PlayerStats playerStats;
+
     GameManager gameManager;
 
     // Start is called before the first frame update
@@ -63,6 +69,19 @@ public class BattleManager : MonoBehaviour
         numAlliesRemaining = numAlliesToSpawn;
         numEnemiesRemaining = numEnemiesToSpawn;
 
+        playerStats = FindObjectOfType<PlayerStats>();
+        if (playerStats != null)
+            UpdatePlayerUI();
+
+    }
+
+    public void UpdatePlayerUI()
+    {
+        hpBar.maxValue = playerStats.maxHP;
+        hpBar.value = playerStats.currentHP;
+
+        hpText.text = playerStats.currentHP.ToString() + " / " + playerStats.maxHP.ToString();
+        army.text = gameManager.currentArmySize.ToString();
     }
 
     void SpawnAI(int numAlliesToSpawn, int numEnemiesToSpawn)
@@ -100,6 +119,7 @@ public class BattleManager : MonoBehaviour
     public void EnemyDies()
     {
         numEnemiesRemaining -= 1;
+        gameManager.currentArmySize -= 1;
 
         if (numEnemiesRemaining <= 0)
             BattleResults(2);

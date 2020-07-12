@@ -18,6 +18,8 @@ public class Axe : MonoBehaviour
 
     private float holdCounter=0f;
 
+    public GameObject glow;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -26,6 +28,11 @@ public class Axe : MonoBehaviour
 
     void Update()
     {
+        if (holdCounter >= holdTime)
+        {
+            glow.SetActive(true);
+        }
+
         if (Input.GetMouseButton(0))
         {
             animator.SetBool("Swing", false);
@@ -60,6 +67,12 @@ public class Axe : MonoBehaviour
         animator.SetBool("Spin", true);
         HitDetection(swingDamage);
         animator.SetBool("ChargeAxe", false);
+        StartCoroutine(GlowDisappear());
+    }
+    IEnumerator GlowDisappear()
+    {
+        yield return new WaitForSeconds(1.5f);
+        glow.SetActive(false);
     }
     public void SpinPlayer()
     {

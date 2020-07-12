@@ -32,7 +32,6 @@ public class Sword : MonoBehaviour
         {
             trails.gameObject.SetActive(true);
 
-           Debug.Log("Swing 1");
             Attack();
         }
 

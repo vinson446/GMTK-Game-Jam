@@ -43,7 +43,6 @@ public class AiSpear : MonoBehaviour
             Collider[] enemiesHit = Physics.OverlapSphere(attackPoint.position, atkRange, Ally);
             foreach (Collider e in enemiesHit)
             {
-                Debug.Log(e.name + "Ally Spear");
                 if (e.GetComponent<Allies>() != null)
                 {
                     e.GetComponent<Allies>().TakeDamage(damage);

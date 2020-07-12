@@ -9,10 +9,12 @@ public class PlayerStats : MonoBehaviour
 
     public float damage;
 
+    BattleManager battleManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -25,6 +27,10 @@ public class PlayerStats : MonoBehaviour
     {
         currentHP = cHP;
         maxHP = mHP;
+
+        battleManager = FindObjectOfType<BattleManager>();
+        if (battleManager != null)
+            battleManager.UpdatePlayerUI();
     }
 
     public void UpdatePlayerStats(float d)
