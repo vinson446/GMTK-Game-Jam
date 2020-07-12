@@ -10,14 +10,14 @@ public class AiSpear : MonoBehaviour
     public LayerMask enemyLayer;
     public LayerMask Ally;
     [Header("AttackStats")]
-    public float  attakHeight=1;
-    public float atkRange =1;
+    public float attakHeight = 1;
+    public float atkRange = 1;
     public Transform attackPoint;
     [Header("Stats")]
     public float damageBuff = -1;
-  
 
-//[Header("Attack")]
+
+    //[Header("Attack")]
 
     public Vector3 attackEndPoint;
 
@@ -43,7 +43,7 @@ public class AiSpear : MonoBehaviour
             Collider[] enemiesHit = Physics.OverlapSphere(attackPoint.position, atkRange, Ally);
             foreach (Collider e in enemiesHit)
             {
-                Debug.Log(e.name +"Ally Spear");
+                Debug.Log(e.name + "Ally Spear");
                 if (e.GetComponent<Allies>() != null)
                     e.GetComponent<Allies>().TakeDamage(damage);
             }
@@ -60,19 +60,6 @@ public class AiSpear : MonoBehaviour
             }
         }
     }
-
-
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-<<<<<<< Updated upstream
-        //Gizmos.DrawLine(attackPoint.position, atkRange);
-    }
-
-    
-=======
-        // Gizmos.DrawLine(attackPoint.position, atkRange);
-    }
->>>>>>> Stashed changes
 }
+
+
