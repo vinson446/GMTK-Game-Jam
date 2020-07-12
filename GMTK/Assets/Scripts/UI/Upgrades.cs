@@ -89,12 +89,12 @@ public class Upgrades : MonoBehaviour
 
     public void PurchaseBarracks()
     {
-        if (!gameManager.unlockedBarracks && gameManager.gold >= buyBarracksCost)
+        if (!gameManager.purchasedBarracks && gameManager.gold >= buyBarracksCost&& gameManager.unlockedBarracks)
         {
             //Instantiate(barrack, Vector3.zero, Quaternion.identity);
             barrack.SetActive(true);
 
-            gameManager.unlockedBarracks = true;
+            gameManager.purchasedTradingPost = true;
 
             buyBarracksButton.interactable = false;
 
@@ -104,12 +104,12 @@ public class Upgrades : MonoBehaviour
 
     public void PurchaseTradingPost()
     {
-        if (!gameManager.unlockedTradingPost && gameManager.gold >= buyTradingPostCost)
+        if (!gameManager.purchasedTradingPost && gameManager.gold >= buyTradingPostCost&& gameManager.unlockedTradingPost)
         {
             //Instantiate(tradingPost, Vector3.zero, Quaternion.identity);
             tradingPost.SetActive(true);
 
-            gameManager.unlockedTradingPost = true;
+            gameManager.purchasedTradingPost = true;
 
             buyTradingPostButton.interactable = false;
 
@@ -119,7 +119,7 @@ public class Upgrades : MonoBehaviour
 
     public void PurchaseHospital()
     {
-        if (!gameManager.unlockedHospital && gameManager.gold >= buyHospitalCost)
+        if (!gameManager.purchasedHospital && gameManager.gold >= buyHospitalCost && gameManager.unlockedTradingPost)
         {
             // Instantiate(hospital, Vector3.zero, Quaternion.identity);
             hospital.SetActive(true);
@@ -131,7 +131,7 @@ public class Upgrades : MonoBehaviour
 
             gameManager.gold -= buyHospitalCost;
         }
-        else if (gameManager.unlockedHospital && gameManager.gold >= buyHospitalCost)
+        else if (gameManager.purchasedHospital && gameManager.gold >= buyHospitalCost)
         {
             Allies player = FindObjectOfType<Allies>();
             player.TakeDamage(-h.playerHeal);

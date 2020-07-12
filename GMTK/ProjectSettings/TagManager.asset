@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Tier1
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,11 @@ TagManager:
   - 
   - Ally
   - Enemy
+<<<<<<< Updated upstream
   - Ground
+=======
+  - Tier1
+>>>>>>> Stashed changes
   - 
   - 
   - 

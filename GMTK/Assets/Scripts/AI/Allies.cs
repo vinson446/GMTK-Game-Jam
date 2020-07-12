@@ -36,7 +36,7 @@ public class Allies : MonoBehaviour
 
     void Die()
     {
-        battleManager.AllyDies();
+      
 
         gameObject.SetActive(false);
     }

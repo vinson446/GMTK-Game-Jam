@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -36,10 +36,6 @@ public class Map : MonoBehaviour
             Application.Quit();
     }
 
-    public void GoToScene(int index)
-    {
-        SceneManager.LoadScene(index);
-    }
 
     public void ShowShopPanel()
     {
@@ -58,20 +54,33 @@ public class Map : MonoBehaviour
     public void ShowFarmUpgradePanel()
     {
         mapPanel.SetActive(false);
+        print("show");
         upgradeFarmPanel.SetActive(true);
         shopPanel.SetActive(false);
 
-        for (int i = 0; i < gameManager.farmsConquered.Length; i++)
+        for (int i = 0; i < gameManager.tier1.Length; i++)
         {
-            if (!gameManager.farmsConquered[i])
+            if (!gameManager.tier1[i].GetComponent<Tier1>().owned)
             {
                 print(i);
-                upgrades.upgradeFarmButton[i].gameObject.SetActive(false);
+                gameManager.tier1[i].GetComponent<Tier1>().UpgradeUI(false);
             }
             else
             {
-                upgrades.upgradeFarmButton[i].gameObject.SetActive(true);
+                gameManager.tier1[i].GetComponent<Tier1>().UpgradeUI(true);
             }
+        }
+    }
+    public void HideFarmUpgradePanel()
+    {
+        mapPanel.SetActive(true);
+        upgradeFarmPanel.SetActive(false);
+        shopPanel.SetActive(true);
+
+        for (int i = 0; i < gameManager.tier1.Length; i++)
+        {
+             gameManager.tier1[i].GetComponent<Tier1>().UpgradeUI(false);
+          
         }
     }
 }

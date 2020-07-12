@@ -24,7 +24,6 @@ public class BattleManager : MonoBehaviour
 
     [Header("Battle Spawn Settings")]
     public int battleFieldNumber;
-
     public float minAllyHP;
     public float maxAllyHP;
     public float minEnemyHP;
@@ -54,15 +53,19 @@ public class BattleManager : MonoBehaviour
     void Start()
     {
         battleResultsPanel.SetActive(false);
-        SpawnAI();
+        gameManager = FindObjectOfType<GameManager>();
+
+        numAlliesToSpawn = gameManager.battleAllies;
+        numEnemiesToSpawn = gameManager.battleEneimes;
+
+        SpawnAI( numAlliesToSpawn, numEnemiesToSpawn);
 
         numAlliesRemaining = numAlliesToSpawn;
         numEnemiesRemaining = numEnemiesToSpawn;
 
-        gameManager = FindObjectOfType<GameManager>();
     }
 
-    void SpawnAI()
+    void SpawnAI(int numAlliesToSpawn, int numEnemiesToSpawn)
     {
         // spawn allies
         for (int i = 0; i < numAlliesToSpawn; i++)
@@ -92,13 +95,7 @@ public class BattleManager : MonoBehaviour
         BattleResults(0);
     }
 
-    public void AllyDies()
-    {
-        numAlliesRemaining -= 1;
-
-        if (numAlliesRemaining <= 0)
-            BattleResults(1);
-    }
+    
 
     public void EnemyDies()
     {
@@ -120,17 +117,11 @@ public class BattleManager : MonoBehaviour
                 loseDescriptionText.text = "You have died in battle.";
                 allyCasualtiesText.text = (numAlliesToSpawn - numAlliesRemaining).ToString();
                 enemyCasualtiesText.text = (numEnemiesToSpawn - numEnemiesRemaining).ToString();
-
+                gameManager.ReturnToMap(0, false);
                 break;
 
             // lose - all allies die
-            case 1:
-                battleResultsText.text = "DEFEAT";
-                loseDescriptionText.text = "All your men have died in battle.";
-                allyCasualtiesText.text = (numAlliesToSpawn - numAlliesRemaining).ToString();
-                enemyCasualtiesText.text = (numEnemiesToSpawn - numEnemiesRemaining).ToString();
-
-                break;
+           
 
             // win - all enemies die
             case 2:
@@ -142,7 +133,7 @@ public class BattleManager : MonoBehaviour
                 enemyCasualtiesText.text = (numEnemiesToSpawn - numEnemiesRemaining).ToString();
 
                 gameManager.areasConquered[battleFieldNumber] = true;
-
+                gameManager.ReturnToMap(0, true);
                 break;
         }
     }

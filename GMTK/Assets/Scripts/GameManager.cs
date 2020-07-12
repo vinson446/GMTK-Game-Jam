@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -12,8 +14,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Army Stats")]
     public int currentArmySize;
-
-
     public int boughtSoldiers;
 
     [Header("Areas Conquered")]
@@ -24,17 +24,20 @@ public class GameManager : MonoBehaviour
     public int[] levelOfFarms;
 
     [Header("Barrack")]
+    public bool purchasedBarracks = false;
     public bool unlockedBarracks = false;
     public int levelOfBarracks;
     public int gainsFromBarracks;
 
     [Header("TradingPost")]
     public bool unlockedTradingPost = false;
+    public bool purchasedTradingPost = false;
     public int levelOfTradingPost;
     public int gainsFromTradingPosts;
 
     [Header("Hospital")]
     public bool unlockedHospital = false;
+    public bool purchasedHospital = false;
     public int levelOfHospital;
     public int playerHeal;
     public int playerHealCost;
@@ -46,18 +49,29 @@ public class GameManager : MonoBehaviour
     public int[] controlInTier2s;
 
     [Header("Food")]
-   public float totalFoodAmmount;
+    public float totalFoodAmmount;
     float totalFoodProcuction;
     float currentFoodProduciton;
-   public float currentFoodCapacity;
+    public float currentFoodCapacity;
 
+    [Header("Town & Battles")]
+    public int battleAllies;
+    public int battleEneimes;
 
+    public GameObject[] tier1;
+    public int tier1Ammount;
+
+    public int townNumberHolder;
 
     GameManager instance;
 
     // Start is called before the first frame update
     void Start()
     {
+        tier1 = GameObject.FindGameObjectsWithTag("Tier1");
+        SetTownNumbers();
+
+
         if (instance == null)
         {
             instance = this;
@@ -76,6 +90,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //just keep this here idk why it shits itself without it
         Mathf.Clamp(currentArmySize, 0f, Mathf.Infinity);
         Mathf.Clamp(totalFoodAmmount, 0f, Mathf.Infinity);
 
@@ -148,4 +163,49 @@ public class GameManager : MonoBehaviour
         if (gold < 0)
             gold = 0;
     }
+
+
+
+    public void StartBattle(int index,int alliesAmnt,int enemiesAmnt, int townNumber)
+    {
+       
+        battleAllies = alliesAmnt;
+        battleEneimes = enemiesAmnt;
+        townNumberHolder = townNumber;
+        SceneManager.LoadScene(index);
+    }
+    public void ReturnToMap(int index,bool battleStatus)
+    {
+        SceneManager.LoadScene(index);
+        UpdateTowns(townNumberHolder,battleStatus);
+    }
+
+    public void SetTownNumbers()
+    {
+        for (int i = 0; i < tier1.Length; i++)
+        {
+            tier1[i].GetComponent<Tier1>().number = i;
+        }
+    }
+
+    public void UpdateTowns(int townNumber,bool battleStatus)
+    {
+        tier1[townNumber].GetComponent<Tier1>().UpdateStatus();
+        Debug.Log("Town Number " + townNumber + " is named " + tier1[townNumber].GetComponent<Tier1>().name+"has won");
+    }
+
+    public void AddTown()
+    {
+        townNumberHolder++;
+    }
+
+    void CheckT2Upgrade()
+    {
+        if (townNumberHolder == 3)
+        {
+            unlockedBarracks = true;
+        }
+    }
+
+
 }
