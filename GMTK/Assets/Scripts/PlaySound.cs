@@ -78,6 +78,6 @@ public class PlaySound : MonoBehaviour
     void SetupAudioSource()
     {
         audioSource.volume = volume;
-        audioSource.pitch = pitch;
+        audioSource.pitch = Random.Range(pitch-0.05f, pitch+0.05f);
     }
 }

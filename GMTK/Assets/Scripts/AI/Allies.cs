@@ -44,10 +44,19 @@ public class Allies : MonoBehaviour
 
     public void ReturnToMap(bool battleStatus)
     {
-        if (battleStatus)
+        GameManager gameManager;
+        gameManager = FindObjectOfType<GameManager>();
+
+        // win
+        if (gameManager.areasConquered[12] && battleStatus)
+        {
+            SceneManager.LoadScene(16);
+        }
+        else if (battleStatus)
             SceneManager.LoadScene(2);
+        // lose
         else
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(17);
         // UpdateTowns(townNumberHolder,battleStatus);
     }
 }

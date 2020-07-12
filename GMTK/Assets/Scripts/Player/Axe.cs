@@ -19,10 +19,12 @@ public class Axe : MonoBehaviour
     private float holdCounter=0f;
 
     public GameObject glow;
+    PlaySound playSound;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        playSound = GetComponent<PlaySound>();
     }
 
 
@@ -54,7 +56,10 @@ public class Axe : MonoBehaviour
             }
         }
     }
-    
+    public void playsound()
+    {
+        playSound.PlayAttackSFX();
+    }
     void Attack()
     {
         animator.SetBool("Swing", true);

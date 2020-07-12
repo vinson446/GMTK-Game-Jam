@@ -19,10 +19,12 @@ public class Sword : MonoBehaviour
     public float comboDelay =2f;
     float lastClickTime =0f;
 
+    PlaySound sfx;
     void Start()
     {
 
         animator = GetComponent<Animator>();
+        sfx = GetComponent<PlaySound>();
 
     }
 
@@ -38,13 +40,11 @@ public class Sword : MonoBehaviour
             //trails.gameObject.SetActive(false);
     }
 
-   
-
+  
     void Attack()
     {
         animator.SetBool("Attack1", true);
         HitDetection();
-
     }
 
     public void Swing1()
@@ -66,7 +66,6 @@ public class Sword : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             animator.SetBool("Attack3", true);
-            HitDetection();
         }
         else
         {
@@ -83,6 +82,10 @@ public class Sword : MonoBehaviour
         animator.SetBool("Attack1", false);
         animator.SetBool("Attack2", false);
         animator.SetBool("Attack3", false);
+    }
+    public void playsound()
+    {
+        sfx.PlayAttackSFX();
     }
 
 

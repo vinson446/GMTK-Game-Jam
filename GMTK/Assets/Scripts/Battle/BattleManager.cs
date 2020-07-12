@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
@@ -152,20 +153,19 @@ public class BattleManager : MonoBehaviour
         NavMeshAgent[] agent = FindObjectsOfType<NavMeshAgent>();
         foreach (NavMeshAgent n in agent)
         {
-            n.enabled = false;
+            n.isStopped = true;
         }
-        this.enabled = false;
 
         Ally[] ally = FindObjectsOfType<Ally>();
         foreach (Ally a in ally)
         {
-            a.enabled = false;
+            a.moveSpeed = 0;
         }
 
         Enemy[] enemy = FindObjectsOfType<Enemy>();
         foreach (Enemy e in enemy)
         {
-            e.enabled = false;
+            e.moveSpeed = 0;
         }
 
         switch (outcome)
@@ -187,7 +187,7 @@ public class BattleManager : MonoBehaviour
             case 2:
                 battleResultsText.text = "VICTORY";
                 battleRewardsText.text = "BATTLE   REWARDS";
-                rewardGoldText.text = "+  " + rewardGold.ToString() + "   GOLD";
+                rewardGoldText.text = "+  " + rewardGold.ToString() + "   GOLD\n+ 1   FARM";
                 allyCasualtiesText.text = (numAlliesToSpawn - numAlliesRemaining).ToString();
                 enemyCasualtiesText.text = (numEnemiesToSpawn - numEnemiesRemaining).ToString();
 

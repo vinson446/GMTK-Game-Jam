@@ -14,7 +14,6 @@ public class AiSword: MonoBehaviour
 
     //[Header("Attack")]
 
-
     void Start()
     {
 

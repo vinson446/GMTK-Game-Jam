@@ -16,10 +16,12 @@ public class Spear : MonoBehaviour
 
     private float holdCounter = 0f;
     public GameObject[] p;
+    PlaySound playSound;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        playSound = GetComponent<PlaySound>();
     }
 
 
@@ -39,6 +41,11 @@ public class Spear : MonoBehaviour
                 holdCounter = 0;
             StartCoroutine(GlowDisappear());
         }
+    }
+
+    public void sound()
+    {
+        playSound.PlayAttackSFX();
     }
 
     IEnumerator GlowDisappear()
