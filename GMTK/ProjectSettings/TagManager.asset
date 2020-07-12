@@ -14,13 +14,9 @@ TagManager:
   - UI
   - 
   - 
-  - Ally
-  - Enemy
-<<<<<<< Updated upstream
-  - Ground
-=======
-  - Tier1
->>>>>>> Stashed changes
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -43,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: high
+    uniqueID: 2635835099
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

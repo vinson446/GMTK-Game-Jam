@@ -21,12 +21,12 @@ public class Map : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mapPanel.SetActive(true);
-        upgradeFarmPanel.SetActive(false);
-        shopPanel.SetActive(false);
-
         gameManager = FindObjectOfType<GameManager>();
         upgrades = FindObjectOfType<Upgrades>();
+        upgradeFarmPanel.SetActive(false);
+        shopPanel.SetActive(false);
+        ShowMapPanel();
+
     }
 
     // Update is called once per frame
@@ -39,22 +39,18 @@ public class Map : MonoBehaviour
 
     public void ShowShopPanel()
     {
-        mapPanel.SetActive(false);
+        HideMapPanel();
         upgradeFarmPanel.SetActive(false);
         shopPanel.SetActive(true);
     }
 
-    public void ShowMapPanel()
-    {
-        mapPanel.SetActive(true);
-        upgradeFarmPanel.SetActive(false);
-        shopPanel.SetActive(false);
-    }
+    
+
 
     public void ShowFarmUpgradePanel()
     {
-        mapPanel.SetActive(false);
-        print("show");
+        //HideMapPanel();
+        //print("show");
         upgradeFarmPanel.SetActive(true);
         shopPanel.SetActive(false);
 
@@ -73,7 +69,7 @@ public class Map : MonoBehaviour
     }
     public void HideFarmUpgradePanel()
     {
-        mapPanel.SetActive(true);
+        
         upgradeFarmPanel.SetActive(false);
         shopPanel.SetActive(true);
 
@@ -83,4 +79,44 @@ public class Map : MonoBehaviour
           
         }
     }
+    public void ShowMapPanel()
+    {
+        mapPanel.SetActive(true);
+        upgradeFarmPanel.SetActive(false);
+        shopPanel.SetActive(false);
+
+       for (int i = 0; i < gameManager.tier1.Length; i++)
+        {
+            if (!gameManager.tier1[i].GetComponent<Tier1>().owned)
+            {
+                print(i);
+                gameManager.tier1[i].GetComponent<Tier1>().AttackUI(true);
+            }
+            else
+            {
+                gameManager.tier1[i].GetComponent<Tier1>().AttackUI(false);
+            }
+        }
+    }
+    public void HideMapPanel()
+    {
+        mapPanel.SetActive(false);
+
+        for (int i = 0; i < gameManager.tier1.Length; i++)
+        {
+            gameManager.tier1[i].GetComponent<Tier1>().AttackUI(false);
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
 }

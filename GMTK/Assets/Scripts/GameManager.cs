@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject[] tier1;
     public int tier1Ammount;
+    public int curretTier=1;
 
     public int townNumberHolder;
 
@@ -168,7 +169,7 @@ public class GameManager : MonoBehaviour
 
     public void StartBattle(int index,int alliesAmnt,int enemiesAmnt, int townNumber)
     {
-       
+        
         battleAllies = alliesAmnt;
         battleEneimes = enemiesAmnt;
         townNumberHolder = townNumber;
@@ -185,6 +186,8 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < tier1.Length; i++)
         {
             tier1[i].GetComponent<Tier1>().number = i;
+            
+            
         }
     }
 
@@ -192,11 +195,13 @@ public class GameManager : MonoBehaviour
     {
         tier1[townNumber].GetComponent<Tier1>().UpdateStatus();
         Debug.Log("Town Number " + townNumber + " is named " + tier1[townNumber].GetComponent<Tier1>().name+"has won");
+        FindObjectOfType<Map>().ShowMapPanel();
     }
 
     public void AddTown()
     {
         townNumberHolder++;
+        CheckT2Upgrade();
     }
 
     void CheckT2Upgrade()
@@ -204,6 +209,9 @@ public class GameManager : MonoBehaviour
         if (townNumberHolder == 3)
         {
             unlockedBarracks = true;
+            unlockedHospital = true;
+            unlockedTradingPost = true;
+            curretTier = 2;
         }
     }
 

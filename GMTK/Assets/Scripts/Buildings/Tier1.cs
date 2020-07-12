@@ -10,12 +10,15 @@ public class Tier1 : MonoBehaviour
 
     public float control = 10;
     public bool owned = false;
-   
+
+    public int maxEnemies;
+    public int MineEnemies;
     int allyAmnt;
-    int enemyAmnt = 10;
+    int enemyAmnt;
 
     public GameObject farm;
-    public GameObject canvas;
+    public GameObject upgradeCanvas;
+    public GameObject AttackCanvas;
 
 
     GameManager gameManager;
@@ -23,6 +26,7 @@ public class Tier1 : MonoBehaviour
 
     void Start()
     {
+        enemyAmnt = Random.Range(MineEnemies, maxEnemies);
       
         gameManager = FindObjectOfType<GameManager>();
 
@@ -46,13 +50,18 @@ public class Tier1 : MonoBehaviour
 
     public void StartBattle(int index)
     {
+        Debug.Log("Started Fight");
         gameManager.StartBattle(index, allyAmnt, enemyAmnt, number);
     }
     
     public void UpgradeUI(bool activate)
     {
-        canvas.SetActive(activate);
+        upgradeCanvas.SetActive(activate);
+    }
 
+    public void AttackUI(bool activate)
+    {
+        AttackCanvas.SetActive(activate);
     }
 
     public void UpdateStatus()
