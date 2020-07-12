@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MAIN MENU.unity
     guid: 93eafc2279c8b5e46a845f2c6e735ee2
   - enabled: 1
-    path: Assets/Scenes/LORE.unity
-    guid: 2cdc1afe510c0cf4aba8c61e72d4afc1
+    path: Assets/Scenes/Thuan/Lore Scene.unity
+    guid: 55b121dc291383b43a7233bd56860155
   - enabled: 1
     path: Assets/Scenes/MAPPPP.unity
     guid: 0b5cd96c87aa6d143a99536677691c71

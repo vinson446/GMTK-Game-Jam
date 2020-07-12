@@ -608,6 +608,11 @@ PrefabInstance:
       propertyPath: enemySpawnMinZ
       value: 160
       objectReference: {fileID: 0}
+    - target: {fileID: 9046925804348139037, guid: 06e32d78aca2d534bb37a32a7cd3d333,
+        type: 3}
+      propertyPath: rewardGold
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 9046925804348139038, guid: 06e32d78aca2d534bb37a32a7cd3d333,
         type: 3}
       propertyPath: m_Name

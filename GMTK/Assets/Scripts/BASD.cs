@@ -21,4 +21,9 @@ public class BASD : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void startgame()
+    {
+        SceneManager.LoadScene(3);
+    }
 }

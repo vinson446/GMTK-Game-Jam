@@ -608,6 +608,11 @@ PrefabInstance:
       propertyPath: enemySpawnMinZ
       value: 160
       objectReference: {fileID: 0}
+    - target: {fileID: 9046925804348139037, guid: 06e32d78aca2d534bb37a32a7cd3d333,
+        type: 3}
+      propertyPath: rewardGold
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 9046925804348139038, guid: 06e32d78aca2d534bb37a32a7cd3d333,
         type: 3}
       propertyPath: m_Name
@@ -15713,7 +15718,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771407818}
-  m_LocalRotation: {x: 0.25084132, y: -0.00000001665627, z: 0.0000000043160733, w: 0.96802825}
+  m_LocalRotation: {x: 0.25084132, y: 0.000000016656259, z: -0.0000000043160706, w: 0.96802825}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -16847,7 +16852,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 818140440}
-  m_LocalRotation: {x: 0.17309915, y: -0.00000000847332, z: 0.000000001489205, w: 0.9849044}
+  m_LocalRotation: {x: 0.17309915, y: 0.00000000847332, z: -0.000000001489205, w: 0.9849044}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -41083,7 +41088,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573638356}
-  m_LocalRotation: {x: 0.17309915, y: -0.00000001694664, z: 0.0000000029784097, w: 0.9849044}
+  m_LocalRotation: {x: 0.17309915, y: 0.00000001694664, z: -0.0000000029784097, w: 0.9849044}
   m_LocalPosition: {x: 89.8, y: 25.46, z: 32.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
